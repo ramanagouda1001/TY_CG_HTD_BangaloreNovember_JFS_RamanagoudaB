@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean id="hello" class="com.capgemini.springcore.beans.Hello" scope="prototype">
+	
+	<!--//helps to create singleton class if u use scopr=prototype differrnt obj will be created  -->
+	<!-- 	<property name="msg" value="I am Ironman"></property>
+		<property name="count" value="10"></property> -->
+		<constructor-arg name="msg" value="I love python"></constructor-arg>
+		<constructor-arg name="count" value="10"></constructor-arg>
+	</bean>
+	
+	<bean id="cat" class="com.capgemini.springcore.beans.Cat"></bean>
+	<bean id="dog" class="com.capgemini.springcore.beans.Dog"></bean>
+	<!-- hello.message is set by getter method -->
+</beans>
+<!-- 5 types of scopes
+1.singleton(defalut)
+2.prototype
+3.request
+4.session
+5.application 
+(1 & 2 only for java application)
+(3-5 for web application)
+
+xml is where u can write an number of user tag to restrcit this we use xsd-->

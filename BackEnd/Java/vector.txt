@@ -1,0 +1,17 @@
+1)vector is synchrozied
+2)duplicate element
+3)null value
+4)dynamic size
+5)legacy methods
+6)maintain insertion order
+method
+
+1)copyInto()
+2)setSize()
+3)capacity()
+4)ensureCapacity()
+5)addElement()
+6)removeElement()
+7)elementAt()
+8)removeAllElements()
+9)trimToSize()

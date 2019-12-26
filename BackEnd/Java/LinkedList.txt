@@ -1,0 +1,9 @@
+1)addFirst() & addLast()
+2)getFirst() &getLast()
+3)remove(),removeFirst(),removeLast(),removeFirstOccurance(),removeLastOccurance()
+4)peek(),peekFirst(),PeekLast()
+5)poll(),pollFirst(),pollLast()
+6)offer(),offerFirst(),offerLast()
+7)push(),pop(),elements()
+
+

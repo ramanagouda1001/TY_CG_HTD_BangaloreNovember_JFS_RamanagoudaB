@@ -1,0 +1,8 @@
+
+public class Atm 
+{
+	void money(Bank b)
+	{
+		b.withdraw();
+	}
+}

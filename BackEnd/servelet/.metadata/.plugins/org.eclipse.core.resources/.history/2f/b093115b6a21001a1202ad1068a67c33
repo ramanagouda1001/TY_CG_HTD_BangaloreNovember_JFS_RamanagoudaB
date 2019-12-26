@@ -1,0 +1,8 @@
+package com.capgemini.mywebapp.servlets.jsp;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet("./uppdateEmployee22")
+public class UpdateEmployee {
+
+}

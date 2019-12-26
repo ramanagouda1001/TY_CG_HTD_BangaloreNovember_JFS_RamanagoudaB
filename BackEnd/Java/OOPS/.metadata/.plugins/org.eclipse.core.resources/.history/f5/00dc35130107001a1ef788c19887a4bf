@@ -1,0 +1,12 @@
+
+public abstract class DEMO {
+	int a;
+	static int b;
+	{
+		a=20;
+		
+	}
+	static {
+		b=20;
+	}
+}

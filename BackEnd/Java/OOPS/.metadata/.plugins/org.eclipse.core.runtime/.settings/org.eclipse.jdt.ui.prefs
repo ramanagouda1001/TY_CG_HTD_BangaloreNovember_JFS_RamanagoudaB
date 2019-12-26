@@ -1,0 +1,16 @@
+content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.jdt.ui.javaChainProposalCategory\u0000
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="Caculator"><rhs name\="ScientficCalculator"/></lhs><lhs name\="ScientficCalculator"><rhs name\="ScientficCalculator"/></lhs><lhs name\="Animal"><rhs name\="Lion"/><rhs name\="Dog"/></lhs><lhs name\="Dog"><rhs name\="Dog"/></lhs><lhs name\="Lion"><rhs name\="Lion"/></lhs><lhs name\="FirstGeneration"><rhs name\="FirstGeneration"/><rhs name\="SecondGeneration"/><rhs name\="ThridGeneration"/></lhs><lhs name\="SecondGeneration"><rhs name\="SecondGeneration"/><rhs name\="ThridGeneration"/></lhs><lhs name\="ThridGeneration"><rhs name\="ThridGeneration"/></lhs><lhs name\="staticAndNonstatic.TestPerson1"><rhs name\="staticAndNonstatic.TestPerson1"/></lhs><lhs name\="staticAndNonstatic.Employee"><rhs name\="staticAndNonstatic.Employee"/></lhs><lhs name\="staticAndNonstatic.Car"><rhs name\="staticAndNonstatic.Car"/></lhs><lhs name\="staticAndNonstatic.GirlFriend"><rhs name\="staticAndNonstatic.GirlFriend"/></lhs><lhs name\="staticAndNonstatic.Student"><rhs name\="staticAndNonstatic.Student"/></lhs><lhs name\="staticAndNonstatic.Vehicle"><rhs name\="staticAndNonstatic.Car1"/></lhs><lhs name\="staticAndNonstatic.Car1"><rhs name\="staticAndNonstatic.Car1"/></lhs><lhs name\="Calculator"><rhs name\="Calculator"/></lhs><lhs name\="Chips"><rhs name\="Chips"/><rhs name\="Kurkure"/><rhs name\="Bingo"/></lhs><lhs name\="Kurkure"><rhs name\="Kurkure"/></lhs><lhs name\="Bingo"><rhs name\="Bingo"/></lhs><lhs name\="Bank"><rhs name\="Bank"/><rhs name\="Sbi"/><rhs name\="Hdfc"/></lhs><lhs name\="Sbi"><rhs name\="Sbi"/></lhs><lhs name\="Hdfc"><rhs name\="Hdfc"/></lhs><lhs name\="Atm"><rhs name\="Atm"/></lhs><lhs name\="Phone"><rhs name\="BasicsSet"/><rhs name\="Oppo"/><rhs name\="OnePlus"/><rhs name\="Apple"/></lhs><lhs name\="Crush"><rhs name\="Crush"/></lhs><lhs name\="BasicsSet"><rhs name\="BasicsSet"/></lhs><lhs name\="Oppo"><rhs name\="Oppo"/></lhs><lhs name\="OnePlus"><rhs name\="OnePlus"/></lhs><lhs name\="Apple"><rhs name\="Apple"/></lhs><lhs name\="FinalVariable"><rhs name\="FinalVariable"/></lhs><lhs name\="InstanceBlock"><rhs name\="InstanceBlock"/></lhs><lhs name\="Vechicle"><rhs name\="Car"/></lhs><lhs name\="Car"><rhs name\="Car"/></lhs></history>
+content_assist_number_of_computers=21
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.internal.ui.navigator.librariesnode=true
+org.eclipse.jdt.ui.formatterprofiles.version=16
+org.eclipse.jdt.ui.text.code_templates_migrated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.text.templates_migrated=true
+spelling_locale_initialized=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

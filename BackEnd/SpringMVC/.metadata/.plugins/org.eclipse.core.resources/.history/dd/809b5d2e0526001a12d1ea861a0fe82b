@@ -1,0 +1,40 @@
+package com.capgemini.empspringmvc.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.empspringmvc.DAO.EmployeeDAO;
+import com.capgemini.empspringmvc.bean.EmployeeBean;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService{
+	
+	@Autowired
+	private EmployeeDAO dao;
+	@Override
+	public EmployeeBean auth(String email, String password) {
+		// TODO Auto-generated method stub
+		return dao.auth(email, password);
+	}
+
+	@Override
+	public boolean register(EmployeeBean bean) {
+		// TODO Auto-generated method stub
+		return dao.register(bean);
+	}
+
+	@Override
+	public List<EmployeeBean> getAllEmployees(String key) {
+		// TODO Auto-generated method stub
+		return dao.getAllEmployees(key);
+	}
+
+	@Override
+	public boolean changePassword(int id, String password) {
+		// TODO Auto-generated method stub
+		return dao.changePassword(id, password);
+	}
+
+}

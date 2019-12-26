@@ -1,0 +1,54 @@
+package com.capgemini.empspringmvc.DAO;
+
+import java.util.List;
+
+import javax.persistence.*;
+
+import com.capgemini.empspringmvc.bean.EmployeeBean;
+
+public class EmployeeDAOImpl implements EmployeeDAO{
+
+	private EntityManagerFactory factroy;
+	
+	@Override
+	public EmployeeBean auth(String email, String password) {
+		EntityManager manager=factroy.createEntityManager();
+		String jpql="from EmploeeeBean where email=:email and password=:password";
+		TypedQuery<EmployeeBean> query=manager.createQuery(jpql,EmployeeBean.class);
+		query.setParameter("email", email);
+		query.setParameter("password", password);
+		try
+		{
+			EmployeeBean bean=query.getSingleResult();
+			return bean;
+		}
+		catch (Exception e) {
+			return null;
+		}		
+	}
+
+	@Override
+	public boolean register(EmployeeBean bean) {
+		
+		return false;
+	}
+
+	@Override
+	public EmployeeBean getEmployee(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<EmployeeBean> getAllEmployees(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean changePassword(int id, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

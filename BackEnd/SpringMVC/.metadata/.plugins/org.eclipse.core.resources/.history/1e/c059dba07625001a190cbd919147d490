@@ -1,0 +1,5 @@
+package com.capgemini.empspringmvc.config;
+
+public class ORMConfig {
+
+}

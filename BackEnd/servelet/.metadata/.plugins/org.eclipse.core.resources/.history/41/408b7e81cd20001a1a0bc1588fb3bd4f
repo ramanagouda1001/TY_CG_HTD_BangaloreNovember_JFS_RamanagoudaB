@@ -1,0 +1,19 @@
+package com.capgemini.mywebapp.servlets.jsp;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+@WebServlet("/login2")
+public class Loginservlet extends HttpServlet {
+		@Override
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			String empIdval=req.getParameter("empId");
+			String password=req.getParameter("password");
+			
+			
+			int empId=Integer.parseInt(empIdval);
+
+		}
+}//end of class

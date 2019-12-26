@@ -1,0 +1,43 @@
+package com.capgemini.mywebapp.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class DateServlet extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		// date from system
+		Date date = new Date();// to create date
+		// get the context-param
+
+		ServletContext context = getServletContext();
+		// or
+		// ServletContext context=req.getServletContext();
+		String contextParamValue = context.getInitParameter("myContextParam");
+
+		// get config param
+		ServletConfig config = getServletConfig();
+		String configParamVal = config.getInitParameter("myConfigParm");
+
+		resp.setContentType("text/html");
+		//resp.setHeader("refresh", "1");// automatically refersh the page
+
+		PrintWriter out = resp.getWriter();
+		out.print("<html>");
+		out.print("<h2>Current date and time-<br>" + date + " </h2>");
+		
+		//Prinitng the config and param
+		out.println("<br>Context param=" + contextParamValue);
+		out.println("<br><br><br>Config Context param=" + configParamVal);
+		out.print("</html>");
+	}
+}// end of class

@@ -1,0 +1,17 @@
+package com.capgemini.springrest.controller;
+
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.capgemini.springrest.dto.EmployeeResponce;
+
+@RestControllerAdvice
+public class EmployeeControllerAdvice {
+
+	public EmployeeResponce handleEmployeeException(Exception e) {
+		EmployeeResponce employeeResponce=new EmployeeResponce();
+		employeeResponce.setStatusCode(501);
+		employeeResponce.setMessage("Exception");
+		employeeResponce.setMessage(e.getMessage());
+		return employeeResponce;
+	}
+}

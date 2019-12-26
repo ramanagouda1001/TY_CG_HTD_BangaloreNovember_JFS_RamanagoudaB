@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+C:\Users\Dell\Desktop\Capgemini\SpringRest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1835881162.index
+\springrest\src\main\resources

@@ -1,0 +1,11 @@
+package staticAndNonstatic;
+public class Car1 extends Vehicle
+{
+	int cost=20000;
+	void carDetails()
+	{
+		System.out.println("the valoue of local vaiable is "+cost);
+		System.out.println("the valour of global variable is "+this.cost);
+		System.out.println("the parent value is "+super.cost);
+	}
+}

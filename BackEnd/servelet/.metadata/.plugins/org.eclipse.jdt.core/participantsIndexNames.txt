@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\Users\Dell\Desktop\Capgemini\servelet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1529537237.index
+\mywebapp\src\main\resources
+C:\Users\Dell\Desktop\Capgemini\servelet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\320810593.index
+\mywebapp\src\main\java

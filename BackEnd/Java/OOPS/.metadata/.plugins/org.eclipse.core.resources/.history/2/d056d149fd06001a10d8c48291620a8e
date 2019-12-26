@@ -1,0 +1,11 @@
+public class TestAnimal 
+{
+	public static void main(String[] args) 
+	{
+		Dog g=new Dog("Pinky");
+		System.out.println(g.name);
+		Animal a=new Dog("jimi");
+		System.out.println(a.name);
+	}
+
+}

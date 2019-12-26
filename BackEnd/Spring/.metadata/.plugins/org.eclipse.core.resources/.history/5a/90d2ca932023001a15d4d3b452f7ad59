@@ -1,0 +1,15 @@
+package com.capgemini.springcore.config;
+
+import org.springframework.context.annotation.Configuration;
+
+import com.capgemini.springcore.beans.Author;
+@Configuration
+public class AuthorBookConig {
+	@Bean("Author")
+	public Author getAuthor()
+	{
+		Author a=new Author();
+		a.setName("Rohan");
+		return a;
+	}
+}

@@ -1,0 +1,106 @@
+package com.capgemini.springrest.controller;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.springrest.dto.EmployeeBean;
+import com.capgemini.springrest.dto.EmployeeResponce;
+import com.capgemini.springrest.services.EmployeeService;
+
+@RestController
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService service;
+
+	@PostMapping(path = "/auth", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public EmployeeResponce auth(@RequestBody EmployeeBean bean) {
+		EmployeeBean employeeBean = service.auth(bean.getEmail(), bean.getPassword());
+		EmployeeResponce employeeResponce = new EmployeeResponce();
+		if (employeeBean != null) {
+			employeeResponce.setStatusCode(201);
+			employeeResponce.setMessage("Sucessfull");
+			employeeResponce.setDiscrption("Empployee found for the credentials");
+			employeeResponce.setBeans(Arrays.asList(employeeBean));
+		} else {
+			employeeResponce.setStatusCode(401);
+			employeeResponce.setMessage("Failure");
+			employeeResponce.setDiscrption("Invalid");
+
+		}
+		return employeeResponce;
+	}
+
+	@PostMapping(path = "/register", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public EmployeeResponce register(@RequestBody EmployeeBean bean) {
+		EmployeeResponce employeeResponce = new EmployeeResponce();
+		if (service.register(bean)) {
+			employeeResponce.setStatusCode(201);
+			employeeResponce.setMessage("Sucessfull");
+			employeeResponce.setDiscrption("Empployee found for the credentials");
+		} else {
+			employeeResponce.setStatusCode(401);
+			employeeResponce.setMessage("Failure");
+			employeeResponce.setDiscrption("Invalid");
+		}
+		return employeeResponce;
+	}
+
+	@GetMapping(path = "/get", produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmployeeResponce serachEmployee(@RequestParam("key") String key) {
+		EmployeeResponce employeeResponce = new EmployeeResponce();
+		List<EmployeeBean> bean = service.getAllEmployees(key);
+		if (bean.isEmpty()) {
+			employeeResponce.setStatusCode(401);
+			employeeResponce.setMessage("Failure");
+			employeeResponce.setDiscrption("Invalid");
+		} else {
+			employeeResponce.setStatusCode(201);
+			employeeResponce.setMessage("Sucessfull");
+			employeeResponce.setDiscrption("Empployee found for the credentials");
+			employeeResponce.setBeans(bean);
+		}
+		return employeeResponce;
+	}
+	@PutMapping(path = "/changepassword", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public EmployeeResponce changePassword(@RequestBody EmployeeBean bean) {
+
+		EmployeeResponce employeeResponce = new EmployeeResponce();
+		if (service.changePassword(bean.getId(), bean.getPassword())) {
+			employeeResponce.setStatusCode(201);
+			employeeResponce.setMessage("Sucessfull");
+			employeeResponce.setDiscrption("Empployee found for the credentials");
+		}
+
+		else {
+			employeeResponce.setStatusCode(401);
+			employeeResponce.setMessage("Failure");
+			employeeResponce.setDiscrption("Invalid");
+		}
+		return employeeResponce;
+	}
+	
+	@DeleteMapping(path="/delete/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmployeeResponce delete(@PathVariable(name="id") int id)
+	{
+		EmployeeResponce employeeResponce=new EmployeeResponce();
+		if (service.deleteEmploye(id)) {
+			employeeResponce.setStatusCode(201);
+			employeeResponce.setMessage("Sucessfull");
+			employeeResponce.setDiscrption("Empployee found for the credentials deleted");
+		}
+		return employeeResponce;
+	}
+}

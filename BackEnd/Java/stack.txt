@@ -1,0 +1,4 @@
+1)push()
+2)pop()//last in first out
+3)peek()
+4)search(object)

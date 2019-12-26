@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="" method="post">
+	<fieldset>
+		<h2>Employee Details</h2>
+		
+			<table>
+			<tr>	
+				<td>Name</td>
+				<td>:</td>
+				<td><input type="text" name="name" required></td>
+			</tr>
+			<tr>	
+				<td>Email</td>
+				<td>:</td>
+				<td><input type="email" name="email" required></td>
+			</tr>
+
+			<tr>	
+				<td>Password</td>
+				<td>:</td>
+				<td><input type="password" name="password" required></td>
+			</tr>
+		</table>
+	</fieldset>
+	<fieldset>
+		<h2>Employee Perment Details</h2>
+		
+			<table>
+			<tr>	
+				<td>Address Type</td>
+				<td>:</td>
+				<td><select name="home">
+   					 <option value="Permament">Permament</option>
+   					 <option value="Tempapory">Tempapory</option>
+    			  </select>
+				</td>
+			</tr>
+			<tr>	
+				<td>Address 1</td>
+				<td>:</td>
+				<td><input type="text" name="address1" required></td>
+			</tr>
+			<tr>	
+				<td>Address 2</td>
+				<td>:</td>
+				<td><input type="text" name="address2" required></td>
+			</tr>
+		</table>
+	</fieldset>	<fieldset>
+		<h2>Employee Tempopary Details</h2>
+		
+			<table>
+				<tr>	
+				<td>Address Type</td>
+				<td>:</td>
+				<td><select name="home">
+   					 <option value="Permament">Permament</option>
+   					 <option value="Tempapory">Tempapory</option>
+    			  </select>
+				</td>
+			</tr>
+			<tr>	
+				<td>Address 1</td>
+				<td>:</td>
+				<td><input type="text" name="address1" required></td>
+			</tr>
+			<tr>	
+				<td>Address 2</td>
+				<td>:</td>
+				<td><input type="text" name="address2" required></td>
+			</tr>
+		</table>
+	</fieldset>
+	<input type="submit" value="Register">
+</form>
+
+</body>
+</html>

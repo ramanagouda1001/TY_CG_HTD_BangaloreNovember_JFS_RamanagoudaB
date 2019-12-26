@@ -1,0 +1,43 @@
+package com.capgemini.springmvc.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.capgemini.springmvc.beans.User;
+
+@Controller
+public class SpringController {
+	@RequestMapping("/hello")
+	public String hello(ModelMap map) {
+		map.addAttribute("msg", "hello world---------------------");
+		return "index";
+	}
+
+//	@RequestMapping(path="/query",method = RequestMethod.GET)
+	@GetMapping("/query") // same as do get method
+	public String query(@RequestParam(name = "name", required = false, defaultValue = "hi") String name,
+			@RequestParam(name = "age", required = false, defaultValue = "20") int age, ModelMap map) {
+		map.addAttribute("name", name);
+		map.addAttribute("age", age);
+		return "query";
+	}
+
+	@GetMapping("/form")
+	public String form() {
+		return "form";
+	}
+
+	@PostMapping("/form")
+	public String form(User use, ModelMap map) {
+		map.addAttribute("name", name);
+		map.addAttribute("email", email);
+		map.addAttribute("password", password);
+		map.addAttribute("gender", gender);
+		return "form";
+	}
+}

@@ -1,0 +1,5 @@
+package com.capgemini.springrest.dto;
+
+public class EmployeeResponce {
+
+}

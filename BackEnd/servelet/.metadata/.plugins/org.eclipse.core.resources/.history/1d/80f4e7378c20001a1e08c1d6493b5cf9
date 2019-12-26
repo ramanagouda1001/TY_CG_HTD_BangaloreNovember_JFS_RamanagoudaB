@@ -1,0 +1,64 @@
+package com.capgemini.mywebapp.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import com.capgemini.mywebapp.bean.EmployeeInfoBean;
+
+public class EmployeeDAOImpl implements EmployeeDAO {
+
+	private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Test");
+
+	@Override
+	public EmployeeInfoBean search(int emp_id) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EmployeeInfoBean bean = entityManager.find(EmployeeInfoBean.class, emp_id);
+		entityManager.close();
+
+		return bean;
+	}
+
+	@Override
+	public EmployeeInfoBean authenticate(int empId, String Password) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		String jpql = "from EmployeeInfoBean where emp_id=:empid and password=:password ";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("empid", empId);
+		query.setParameter("password", Password);
+
+		EmployeeInfoBean bean = null;
+		try {
+			bean = (EmployeeInfoBean) query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		entityManager.close();
+		return bean;
+	}
+
+	@Override
+	public boolean add(EmployeeInfoBean bean) {
+		EntityManager entityManager=entityManagerFactory.createEntityManager();
+		EntityTransaction transaction=entityManager.getTransaction();
+		transaction.begin();
+		try
+		{
+			entityManager.persist(bean);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean delete(int emp_id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,4 @@
+start() is used to thread for running state
+stop() is used to thread for stopping
+sleep() is used to thread to sleep for few min
+wait() is used to thread to wait and to be used with  synchronized method

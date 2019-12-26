@@ -1,0 +1,36 @@
+package com.capgemini.mywebapp.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/include")
+public class IncludeServlet extends HttpServlet{
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		 resp.setContentType("text/html");
+		 PrintWriter printWriter=resp.getWriter();
+		 printWriter.println("<html>");
+		 printWriter.println("<body>");
+		 printWriter.println("<h2> hello world</h2>");
+		 printWriter.println("</body>");
+		 printWriter.println("</html>");
+		
+		String url="./currentDate";
+		RequestDispatcher dispatcher=req.getRequestDispatcher(url);
+		dispatcher.include(req, resp);
+		
+		
+		//both forward and include work as same as url does not changes
+		// but forrwad send resp is sent to browser
+		// but include send resp to back to servlet which has sent request to it include both result both servelt
+	}
+}

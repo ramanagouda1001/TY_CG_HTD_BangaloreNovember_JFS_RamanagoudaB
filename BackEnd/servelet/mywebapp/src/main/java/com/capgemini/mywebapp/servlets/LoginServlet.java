@@ -1,0 +1,61 @@
+package com.capgemini.mywebapp.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.capgemini.mywebapp.bean.EmployeeInfoBean;
+import com.capgemini.mywebapp.service.EmployeeService;
+import com.capgemini.mywebapp.service.EmployeeServiceImpl;
+
+@WebServlet("/Login")
+public class LoginServlet extends HttpServlet {
+	
+	private EmployeeService service=new EmployeeServiceImpl();
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String empIdval=req.getParameter("empId");
+		String password=req.getParameter("password");
+		
+		
+		int empId=Integer.parseInt(empIdval);
+		EmployeeInfoBean bean=service.authenticate(empId, password);
+		
+		PrintWriter out=resp.getWriter();
+		out.println("<html>");
+		out.println("<body>");
+		if(bean!=null)
+		{
+			HttpSession session=req.getSession(true);
+			session.setAttribute("bean",bean);
+			out.println("<h2>Welcome "+bean.getName()+"!</h2>");
+			out.println("<br><a href='./addEmploye.html'>Add Employee</a>");
+			out.println("<br><a href='#'>update Employee</a>");
+			out.println("<br><a href='./searchEmpForm.html'>Serach Employee</a>");
+			out.println("<br><a href='./deleteEmpForm.html'>Delete Employee</a>");
+			out.println("<br><a href='#'>See All Employee</a>");
+			out.println("<br><br><a href='./logout'>Logut</a>");
+			//req.getSession()=req.getSession(true);
+			//both are same for reable purpose always pass true
+			
+			//always pass true while creating session
+			//intermediate session is false
+			//valid  credentials
+		}
+		else
+		{
+			//invalid credentials
+			out.println("<h2 style='color:red'>Invalid Credentials</h2>");
+			req.getRequestDispatcher("loginPage.html").include(req, resp);
+		}
+		
+		out.println("</body>");
+		out.println("</html>");
+	}
+}

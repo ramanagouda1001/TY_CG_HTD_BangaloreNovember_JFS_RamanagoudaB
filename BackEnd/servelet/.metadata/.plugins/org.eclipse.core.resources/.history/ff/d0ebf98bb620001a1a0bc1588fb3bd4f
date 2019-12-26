@@ -1,0 +1,63 @@
+package com.capgemini.mywebapp.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.capgemini.mywebapp.bean.EmployeeInfoBean;
+import com.capgemini.mywebapp.service.EmployeeService;
+import com.capgemini.mywebapp.service.EmployeeServiceImpl;
+
+@WebServlet("/addEmployee")
+public class AddEmployeeServlet extends HttpServlet {
+
+	private EmployeeService service = new EmployeeServiceImpl();
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession(false);
+		PrintWriter out = resp.getWriter();
+		if (session != null) {
+			// validEmployeeInfoBean bean=new EmployeeInfoBean();
+			int empIdVal = Integer.parseInt(req.getParameter("empId"));
+			String name = req.getParameter("name");
+			int age = Integer.parseInt(req.getParameter("age"));
+			Double salary = Double.parseDouble(req.getParameter("salary"));
+			String designation = req.getParameter("desgination");
+			String password = req.getParameter("password");
+
+			EmployeeInfoBean bean = new EmployeeInfoBean();
+			bean.setEmp_id(empIdVal);
+			bean.setName(name);
+			bean.setAge(age);
+			bean.setSalary(salary);
+			bean.setDesignation(designation);
+			bean.setPassword(password);
+			
+			out.println("<html>");
+			out.println("<body>");
+
+			if (service.add(bean)) {
+				out.println("<h2>ADDED SUCESSFULLY</h2>");
+			} else {
+				out.println("<h2>UNSUCESSFULLY</h2>");
+			}
+			out.println("<html>");
+			out.println("<body>");
+			req.getRequestDispatcher("./addEmploye").include(req, resp);
+		} else {
+			out.println("<html>");
+			out.println("<body>");
+			out.println("Plz login first");
+			out.println("</body>");
+			out.println("</html>");
+			req.getRequestDispatcher("loginPage.html").include(req, resp);
+		}
+
+	}
+}

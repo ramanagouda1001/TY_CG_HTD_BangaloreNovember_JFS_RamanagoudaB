@@ -1,0 +1,47 @@
+package com.capgemini.empspringmvc.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.empspringmvc.bean.EmployeeAddressBean;
+import com.capgemini.empspringmvc.bean.EmployeeBean;
+import com.capgemini.empspringmvc.dao.EmployeeDAO;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService{
+	BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+	
+	@Autowired
+	private EmployeeDAO dao;
+	@Override
+	public EmployeeBean auth(String email, String password) {
+		return dao.auth(email,password);
+	}
+
+	@Override
+	public boolean register(EmployeeBean bean) {
+		String enCodedPassword=encoder.encode(bean.getPassword());
+		bean.setPassword(enCodedPassword);
+		List<EmployeeAddressBean>  addressBeans=bean.getAddressBeans();
+		for (EmployeeAddressBean employeeAddressBean : addressBeans) {
+			employeeAddressBean.setBean(bean);
+		}
+		return dao.register(bean);
+	}
+
+	@Override
+	public List<EmployeeBean> getAllEmployees(String key) {
+		// TODO Auto-generated method stub
+		return dao.getAllEmployees(key);
+	}
+
+	@Override
+	public boolean changePassword(int id, String password) {
+		// TODO Auto-generated method stub
+		return dao.changePassword(id, encoder.encode(password));
+	}
+
+}

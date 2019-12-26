@@ -1,0 +1,17 @@
+(hashmap)
+entry->(key,value)always key should be unique
+collections of entry is called entry set
+map is sorted based on key not never based value
+non-synchronized
+
+methods
+1)put
+2)entrySet()
+3)getKey()
+4)getValues()
+5)size()
+6)isEmpty()
+7)containsValues()
+8)continsKey()
+9)keySet()
+10)values()

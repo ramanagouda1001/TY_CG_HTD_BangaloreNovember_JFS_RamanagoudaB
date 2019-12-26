@@ -1,0 +1,13 @@
+public class TestCalculator 
+{
+	public static void main(String[] args) 
+	{
+		Calculator c=new Calculator();
+		System.out.println("the result 1 is "+c.add(12));
+		System.out.println("the result of 2 is "+c.add(22,2026));
+		System.out.println("the result 3 is "+c.add(12.5));
+		Calculator.mutiply(23);
+		Calculator.mutiply(22,45);
+		Calculator.mutiply(22.45);
+	}
+}

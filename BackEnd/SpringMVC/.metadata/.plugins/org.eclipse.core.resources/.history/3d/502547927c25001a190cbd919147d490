@@ -1,0 +1,26 @@
+package com.capgemini.empspringmvc.bean;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table
+public class EmployeeBean {
+	
+	@Id
+	@Column
+	@GeneratedValue
+	private int id;
+	
+	private String name;
+	
+	private String email;
+	
+	private String password;
+}

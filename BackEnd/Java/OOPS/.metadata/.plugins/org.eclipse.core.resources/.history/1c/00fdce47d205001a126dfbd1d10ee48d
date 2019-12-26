@@ -1,0 +1,5 @@
+package staticAndNonstatic;
+
+public class Car1 extends Vehicle {
+
+}

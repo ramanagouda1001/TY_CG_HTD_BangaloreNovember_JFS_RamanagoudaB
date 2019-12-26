@@ -1,0 +1,14 @@
+REST-Representattion state transfrom
+JSON-Java Script Object notation
+
+
+steps
+1)Maven project webapp
+* 1.8 java
+* 3.1 deployment
+
+2)spring webmvc 5.0.8
+spring orm 5.0.8
+hibernate core 
+hibrnate entityManager
+muysql connector

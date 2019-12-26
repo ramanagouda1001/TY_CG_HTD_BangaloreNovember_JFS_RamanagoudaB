@@ -1,0 +1,19 @@
+package com.capgemini.springcore.beans;
+
+public class Hello {
+	private String msg;
+	
+
+	public Hello(String msg, int count) {
+		super();
+		this.msg = msg;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+	
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+}

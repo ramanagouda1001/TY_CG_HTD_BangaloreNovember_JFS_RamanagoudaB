@@ -1,0 +1,42 @@
+package com.capgemini.springcore;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.capgemini.springcore.beans.Animal;
+import com.capgemini.springcore.beans.Hello;
+
+/**
+ * Hello world!
+ *
+ */
+public class App {
+	public static void main(String[] args) {
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");//ApplicationContext is interface
+		Hello hello = context.getBean(Hello.class);
+		Hello hello1 = context.getBean(Hello.class);
+		System.out.println(hello.getMsg());
+		System.out.println(hello.getCount());
+		System.out.println("*************************");
+		System.out.println(hello==hello1);
+		System.out.println("*************************");
+		System.out.println(hello);
+		System.out.println(hello1);
+		
+		
+		
+		Animal animal=context.getBean(Animal.class);
+		}
+}
+/**ApplicationContext has five implementation
+1.ClassPathXmlApplicationContext used to read xml only if beans.xml is present within a same pacakge
+2.FileSystemXmlApplicationContext() used to read xml used if it is present anywhere
+3.AnnotationConfigApplicationContext() instead of xml we use java class and config for beans requirment
+4.XmlWEbApplicationContext
+5.AnnotationConfigWebApplicationContext()
+4&5 are never used but spring internal uses
+ whenever we use above a container(IOC) is created and store all the object we have configred//
+spring check whether a object is present if yes retuen object (15) and object is creted in xml(9-11)
+if not found then throw exception as no qualifying bean of type then full full qualified name of class
+
+*/

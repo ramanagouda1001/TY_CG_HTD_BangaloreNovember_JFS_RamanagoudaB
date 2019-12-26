@@ -1,0 +1,46 @@
+package com.capgemini.springrest.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.springrest.dto.EmployeeBean;
+import com.capgemini.springrest.services.EmployeeService;
+
+@RestController
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService service;
+
+	
+	@PostMapping(path="/auth",produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes =MediaType.APPLICATION_JSON_VALUE )//to be used if @requedtbody
+	public EmployeeBean auth(@RequestBody EmployeeBean bean) {
+		return service.auth(bean.getEmail(), bean.getPassword());
+	}
+
+	@PostMapping(path="/register",produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = MediaType.APPLICATION_JSON_VALUE)
+	public boolean register(@RequestBody EmployeeBean bean) {
+		return service.register(bean);
+	}
+	
+	@GetMapping(path="/get",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<EmployeeBean> serachEmployee(@RequestParam("key"),String key) {
+		return service.getAllEmployees(key);
+	}
+
+	@PutMapping(path="/changepassword",produces = MediaType.APPLICATION_JSON_VALUE)
+	public boolean changePassword(@RequestBody EmployeeBean bean) {
+		return service.changePassword(bean.getId(), bean.getPassword());
+	}
+}

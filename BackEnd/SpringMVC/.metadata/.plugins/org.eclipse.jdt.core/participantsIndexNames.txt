@@ -1,0 +1,11 @@
+INDEX VERSION 1.131
+C:\Users\Dell\Desktop\Capgemini\SpringMVC\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1697476597.index
+\empspringmvc\src\main\java
+C:\Users\Dell\Desktop\Capgemini\SpringMVC\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2295949664.index
+\springmvc\src\main\java
+C:\Users\Dell\Desktop\Capgemini\SpringMVC\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\45213692.index
+\empspringmvc\src\main\resources
+C:\Users\Dell\Desktop\Capgemini\SpringMVC\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2282355124.index
+\emwebapp\src\main\resources
+C:\Users\Dell\Desktop\Capgemini\SpringMVC\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3490526498.index
+\springmvc\src\main\resources

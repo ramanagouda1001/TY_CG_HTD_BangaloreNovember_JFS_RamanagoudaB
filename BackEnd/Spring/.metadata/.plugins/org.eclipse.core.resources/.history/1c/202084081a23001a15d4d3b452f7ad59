@@ -1,0 +1,23 @@
+package com.capgemini.springcore.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.capgemini.springcore.beans.Dog;
+import com.capgemini.springcore.beans.Hello;
+
+@Configuration
+public class BeansConfig {
+	@Bean("hello")
+	public Hello getHello()
+	{
+		Hello hello=new Hello();
+		hello.setMsg("I love You");
+		hello.setCount(3000);
+		return hello;
+	}
+	public Dog getDog()
+	{
+		return new Dog();
+	}
+}

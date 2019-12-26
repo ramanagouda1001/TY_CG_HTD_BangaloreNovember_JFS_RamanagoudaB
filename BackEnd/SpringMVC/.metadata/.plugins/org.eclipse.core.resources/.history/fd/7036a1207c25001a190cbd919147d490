@@ -1,0 +1,14 @@
+package com.capgemini.empspringmvc.bean;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table
+public class EmployeeBean {
+
+	
+}

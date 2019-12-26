@@ -1,0 +1,8 @@
+public class TestFinal 
+{
+	public static void main(String[] args) 
+	{
+		FinalVariable f=new FinalVariable(3.14);
+		f.
+	}
+}
