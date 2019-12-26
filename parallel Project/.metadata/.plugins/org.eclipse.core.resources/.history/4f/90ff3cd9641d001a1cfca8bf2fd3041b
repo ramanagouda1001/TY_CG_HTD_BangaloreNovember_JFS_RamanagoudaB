@@ -1,0 +1,8 @@
+package com.ConatctFile.bean;
+
+public class Contact {
+	private String name;
+	private int number;
+	private String group;
+	
+}

@@ -1,0 +1,55 @@
+package com.ContactFile.dao;
+
+import java.util.List;
+
+import com.ConatctFile.bean.Contact;
+
+FileReader reader;
+Properties prop;
+Contract user;
+
+public ContractDAOImpl() {
+	try {
+		reader = new FileReader("db.properties");
+		prop = new Properties();
+		prop.load(reader);
+		Class.forName(prop.getProperty("driver"));
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		System.out.println("hi");
+	}
+}
+
+public class ContactDAOImpl  implements ContactDAO{
+
+	@Override
+	public List<Contact> contractDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addContact(Contact bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteContact(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Contact serachDetails(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean editNumber(String name, int number) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

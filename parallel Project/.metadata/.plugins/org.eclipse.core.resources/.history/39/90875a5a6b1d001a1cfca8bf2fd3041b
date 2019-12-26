@@ -1,0 +1,45 @@
+package com.ContactFile.controller;
+
+import java.util.Scanner;
+
+import com.ConatctFile.bean.Contact;
+import com.ContactFile.factory.Factory;
+import com.ContactFile.services.ContactService;
+
+public class MainPoint {
+	public static void main(String[] args) {
+		char ch2='y';
+		int choice=0;
+		ContactService serive=Factory.intanceOfContactServieImpl();
+		Scanner in=new Scanner(System.in);
+		while(ch2=='y')
+		{
+			
+			System.out.println("1 list of all");
+			System.out.println("2.search");
+			System.out.println("3.Opertaion");
+			choice=in.nextInt();
+			if(choice==1||choice==2||choice==3)
+			{
+				ch2='n';
+			}
+			else
+			{
+				System.err.println("plz select above option ");
+			}
+			switch(choice)
+			{	
+			case 1:
+				if(serive.contractDetails()!=null)
+				{
+					System.out.println(serive.contractDetails());
+				}
+				else
+				{
+					System.err.println("emprty");
+				}
+			
+			}
+		}
+	}
+}

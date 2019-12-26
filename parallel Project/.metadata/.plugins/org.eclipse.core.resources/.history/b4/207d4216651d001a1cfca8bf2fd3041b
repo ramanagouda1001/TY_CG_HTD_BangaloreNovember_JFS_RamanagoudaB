@@ -1,0 +1,5 @@
+package com.ContactFile.services;
+
+public class ContactServicesImpl implements ContactService {
+
+}

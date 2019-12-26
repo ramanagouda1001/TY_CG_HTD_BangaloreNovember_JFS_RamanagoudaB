@@ -1,0 +1,16 @@
+.row{
+    margin-top: 40px;
+}
+.row .card{
+    margin-left: 200px;
+}
+.navbar .collapse .navbar-nav .rightt a{
+    padding-left: 1200px;
+}
+
+.navbar .collapse .navbar-nav .leftt a{
+    padding-left: 10px;
+}
+.row .col-md-6 .card{
+    width: 500px;
+}

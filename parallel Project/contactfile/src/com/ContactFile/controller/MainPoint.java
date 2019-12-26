@@ -1,0 +1,114 @@
+package com.ContactFile.controller;
+
+import java.util.Scanner;
+
+import com.ConatctFile.bean.Contact;
+import com.ContactFile.factory.Factory;
+import com.ContactFile.services.ContactService;
+
+public class MainPoint {
+	public static void main(String[] args) {
+		char ch2='y';
+		int choice=0;
+		
+		ContactService serive=Factory.intanceOfContactServieImpl();
+		Scanner in=new Scanner(System.in);
+		while(true)
+		{
+			
+			System.out.println("1 list of all");
+			System.out.println("2.search");
+			System.out.println("3.Opertaion");
+			choice=in.nextInt();
+			
+			switch(choice)
+			{	
+			case 1:
+				if(serive.contractDetails()!=null)
+				{
+					System.out.println(serive.contractDetails());
+				}
+				else
+				{
+					System.err.println("empty");
+				}
+				break;
+			case 2:
+				System.out.println("enter the name");
+				String name=in.next();
+				Contact con=serive.searchContact(name);
+				if(serive.searchContact(name)!=null)
+				{
+					System.out.println("1.meassage");
+					System.out.println("2.call");
+					int chice=in.nextInt();
+					switch(chice)
+					{
+					case 1:
+						System.out.println("meassing..."+con.getName());
+						break;
+					case 2:
+						System.out.println("Calling..."+con.getName());
+					}
+				}
+				else
+				{
+					System.out.println("null");
+				}
+				
+				break;
+			case 3:
+				System.out.println("1.Add");
+				System.out.println("2.delete");
+				System.out.println("3.Edit");
+				int choices=in.nextInt();
+				switch(choices)
+				{
+				case 1:
+						Contact bean=new Contact();
+						System.out.println("Enter the name");
+						bean.setName(in.next());
+						System.out.println("Enter the number");
+						bean.setNumber(in.nextInt());
+						System.out.println("enter the group");
+						bean.setGroup(in.next());
+						if(serive.addContact(bean))
+							System.out.println("added");
+						else
+							System.out.println("unsucessfully");
+					break;
+				case 2:
+					System.out.println("enter the name");
+					String name1=in.next();
+					if(serive.deleteContact(name1))
+						System.out.println("done");
+					else
+						System.out.println("error");
+					break;
+				case 3:
+					System.out.println("enter the nmber");
+					int number=in.nextInt();
+					System.out.println("enter the name");
+					String name3=in.next();
+
+					if(serive.editNumber(name3, number))
+						System.out.println("done");
+					else
+						System.out.println("error");
+					break;
+				}
+			}
+		}
+	}
+	public static boolean isNumber(String s)
+	{
+		try {
+			int result = Integer.parseInt(s);
+			return true;
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+	}
+}

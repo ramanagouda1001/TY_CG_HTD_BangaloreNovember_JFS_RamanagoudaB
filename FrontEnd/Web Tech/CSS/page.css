@@ -1,0 +1,9 @@
+img{
+    border: 20px solid green;
+}
+.one,.two{
+    color: green;
+}
+.two{
+    color: firebrick;
+}

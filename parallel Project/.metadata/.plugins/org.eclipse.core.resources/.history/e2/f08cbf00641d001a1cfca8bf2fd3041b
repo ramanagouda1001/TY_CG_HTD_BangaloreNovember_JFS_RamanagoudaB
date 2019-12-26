@@ -1,0 +1,5 @@
+package com.ConatctFile.bean;
+
+public class Contact {
+
+}

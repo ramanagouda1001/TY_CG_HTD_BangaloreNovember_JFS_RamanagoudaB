@@ -1,0 +1,41 @@
+package com.ContactFile.services;
+
+import java.util.List;
+
+import com.ConatctFile.bean.Contact;
+import com.ContactFile.dao.ContactDAO;
+import com.ContactFile.factory.Factory;
+
+public class ContactServicesImpl implements ContactService {
+
+	ContactDAO dao=Factory.intanceOfContractDAOImpl();
+	@Override
+	public List<Contact> contractDetails() {
+		// TODO Auto-generated method stub
+		dao.contractDetails();
+	}
+
+	@Override
+	public boolean addContact(Contact bean) {
+		// TODO Auto-generated method stub
+		return dao.addContact(bean);
+	}
+
+	@Override
+	public boolean deleteContact(String name) {
+		// TODO Auto-generated method stub
+		return dao.deleteContact(name);
+	}
+
+	@Override
+	public Contact serachDetails(String name) {
+		return dao.serachDetails(name);
+	}
+
+	@Override
+	public boolean editNumber(String name, int number) {
+		// TODO Auto-generated method stub
+		return dao.editNumber(name, number);
+	}
+
+}

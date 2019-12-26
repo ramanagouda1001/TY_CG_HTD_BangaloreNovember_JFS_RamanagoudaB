@@ -1,0 +1,36 @@
+ul li {
+    list-style: none;
+    display: inline;
+    text-decoration: none;
+}
+ul  li a{
+    text-decoration: none;
+    padding-left: 20px;
+    
+}
+ul .FIRST{
+    float: right;
+}
+.box{
+    height: 400px;
+    width: 500px;
+    border: 2px solid red;
+    margin-top: 150px;
+    margin-left: 500px;
+}
+.box img{
+    width: 200px;
+    height: 200px;
+    border-radius:50%;
+    padding-top: 10px;
+}
+.box h1{
+    font-size: 20px;
+    padding-left: 180px;
+
+}
+.box p{
+    font-size: 20px;
+    padding-left: 140px;
+    padding-top: 20px;
+}

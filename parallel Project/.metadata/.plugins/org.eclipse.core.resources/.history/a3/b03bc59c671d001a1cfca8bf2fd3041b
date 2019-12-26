@@ -1,0 +1,5 @@
+package com.ContactFile.factory;
+
+public class Factory {
+
+}

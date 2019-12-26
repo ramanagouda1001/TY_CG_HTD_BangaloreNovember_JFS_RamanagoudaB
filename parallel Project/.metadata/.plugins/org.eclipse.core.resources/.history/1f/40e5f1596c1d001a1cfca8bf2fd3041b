@@ -1,0 +1,9 @@
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://127.0.0.1:3307/ContactFile
+user=root
+password=root
+
+
+insert=insert into Contact values(?,?,?)
+display=select * from Contact;
+delete=delete from Contact where name=?

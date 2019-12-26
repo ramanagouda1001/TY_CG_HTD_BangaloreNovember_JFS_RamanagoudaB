@@ -1,0 +1,33 @@
+package com.ContactFile.controller;
+
+import java.util.Scanner;
+
+import com.ConatctFile.bean.Contact;
+import com.ContactFile.factory.Factory;
+import com.ContactFile.services.ContactService;
+
+public class MainPoint {
+	public static void main(String[] args) {
+		char ch2='y';
+		ContactService serive=Factory.intanceOfContactServieImpl();
+		Scanner in=new Scanner(System.in);
+		while(ch2=='y')
+		{
+			
+			System.out.println("1 Add the contract");
+			System.out.println("2.delete the contract");
+			System.out.println("3.Display the contract");
+			System.out.println("4.Access specify user");
+			System.out.println("enter the choice");
+			int choice=in.nextInt();
+			if(choice==1||choice==2||choice==3||choice==4)
+			{
+				ch2='n';
+			}
+			else
+			{
+				System.err.println("plz select above option ");
+			}
+		}
+	}
+}

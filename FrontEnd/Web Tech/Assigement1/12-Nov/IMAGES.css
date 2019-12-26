@@ -1,0 +1,42 @@
+ol li{
+    list-style: none;
+    display: inline;
+    padding-left: 25px;
+}
+ol li a{
+    text-decoration: none;
+}
+ol .RIGHT{
+    float:right;
+}
+span{
+    margin-top: 100px;
+}
+span img{
+    border-radius: 50%;
+}
+.FIRST{
+    margin-left: 100px;
+ }
+.FIRST img{
+     padding-top: 50px;
+     background-size: cover;
+ }
+.SECOND{
+    margin-left: 150px;
+}
+.THIRD{
+    margin-left: 150px;
+}
+.FOUR{
+    margin-left: 100px;
+}
+.FOUR img{
+    padding-top: 50px;
+}
+.FIVE{
+    margin-left: 150px;
+}
+.SIX{
+    margin-left: 150px;
+}

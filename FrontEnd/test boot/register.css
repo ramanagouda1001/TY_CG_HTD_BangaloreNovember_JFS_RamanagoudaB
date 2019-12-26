@@ -1,0 +1,15 @@
+body{
+    background: url("./images.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+@media(max-width:1100px)
+{
+    body{
+    background: url("./img1\ \(1\).jpg") no-repeat center center fixed;
+    background-size: cover;
+}   
+}
+.card .card-body span i{
+font-size: 30px;
+padding-left: 90px;
+}

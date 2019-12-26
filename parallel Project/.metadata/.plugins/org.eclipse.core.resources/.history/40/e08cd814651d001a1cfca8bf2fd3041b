@@ -1,0 +1,5 @@
+package com.ContactFile.dao;
+
+public class ContactDAOImpl  implements ContactDAO{
+
+}

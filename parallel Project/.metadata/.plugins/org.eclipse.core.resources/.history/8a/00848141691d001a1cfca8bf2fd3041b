@@ -1,0 +1,19 @@
+package com.ContactFile.controller;
+
+import java.util.Scanner;
+
+import com.ConatctFile.bean.Contact;
+import com.ContactFile.factory.Factory;
+import com.ContactFile.services.ContactService;
+
+public class MainPoint {
+	public static void main(String[] args) {
+		ContactService serive=Factory.intanceOfContactServieImpl();
+		Scanner in=new Scanner(System.in);
+		Contact con=new Contact();
+		con.setName("rohan");
+		con.setNumber(123456789);
+		con.setGroup("hello");
+	
+	}
+}

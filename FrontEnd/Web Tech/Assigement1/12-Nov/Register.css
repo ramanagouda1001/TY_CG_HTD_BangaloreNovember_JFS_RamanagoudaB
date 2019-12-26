@@ -1,0 +1,29 @@
+body{
+    background-image: url(./895631.jpg);
+    background-size: cover;
+}
+ .Center
+ {
+     height: 400px;
+     width: 400px;
+     margin-top: 200px;
+     margin-left: 550px;
+     box-shadow: 20px;
+     background-color: red;
+     opacity: 0.5;
+ }
+.Fname
+{
+ padding-top: 100px;
+ padding-left:50px;
+ font-size: 20px;
+}
+.lname{
+ padding-top: 50px;
+ padding-left:50px;
+ font-size: 20px;
+}
+.but{
+ padding-top: 50px;
+ padding-left:200px;
+}
