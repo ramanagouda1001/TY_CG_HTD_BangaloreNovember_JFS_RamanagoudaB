@@ -1,0 +1,101 @@
+html
+{
+   1) inline,block level elemensts
+   2)template,details,summary tag
+   3)list of inline and block level 
+   4)input tag attributes
+   5)validating input type date
+   6)input tag attributes
+   7)sematics elemensts
+}
+
+css{
+    1)css box model
+    2)position property
+    3)position property
+}
+
+bootstrap{
+    grid system
+}
+
+javascript{
+    program
+    1)fibonanaci
+    2)palindrome
+    3)first n prime number
+    4)factorial number
+    5)1
+        1 2
+        1 2 3
+        1 2 3 4
+        1 2 3 4 5
+}
+
+inline =<a>,<input><img>
+block=<h1><h6>,<div>
+inline->block{display:inline-block,block}
+block->inline{display:inline}
+
+template used to hide content from client
+details used to hide or show on demand on client
+summary used display the heading for details and used within details 
+
+
+list of input tages
+<input type="button">
+<input type="checkbox">
+<input type="color">
+<input type="date">
+<input type="datetime-local">
+<input type="email">
+<input type="file">
+<input type="hidden">
+<input type="image">
+<input type="month">
+<input type="number">
+<input type="password">
+<input type="radio">
+<input type="range">
+<input type="reset">
+<input type="search">
+<input type="submit">
+<input type="tel">
+<input type="text">
+<input type="time">
+<input type="url">
+<input type="week">
+
+
+input type="date" id="start" name="trip-start"
+       value="2018-07-22"
+       min="2018-01-01" max="2018-12-01"
+
+
+Semantics is the study of the meanings of words and phrases in a language.\
+<article>
+<aside>
+<details>
+<figcaption>
+<figure>
+<footer>
+<header>
+<main>
+<mark>
+<nav>
+<section>
+<summary>
+<time>
+
+
+property values
+static-default value elemensts render in the noraml flow
+absoulte-the elemensts is positioned acoording to its ancestor elemensts
+fixed-positioned relative to browser window
+relative-the elemensts is positioned according to normal flow
+sticky-the elemensts is positioned based on user scroll
+
+
+
+
+
