@@ -1,0 +1,23 @@
+nav{
+    background-color: steelblue;
+    padding:40px;
+}
+nav ul{
+    margin:0;
+}
+nav ul li{
+    display: inline;
+    padding: 20px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+nav ul li:nth-last-child(1)
+{
+    float:right;
+}
+nav ul li:nth-last-child(2)
+{
+    float:right;
+}

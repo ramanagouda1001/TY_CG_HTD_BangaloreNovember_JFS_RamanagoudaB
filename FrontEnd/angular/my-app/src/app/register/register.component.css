@@ -1,0 +1,12 @@
+form{
+    padding-top: 150px;
+    padding-left: 200px;
+    padding-right: 100px;
+    margin-left: 100px;
+}
+.input-group:nth-last-child(2){
+    margin-top: 50px;
+}
+.input-group input{
+    margin-right: 300px;
+}
