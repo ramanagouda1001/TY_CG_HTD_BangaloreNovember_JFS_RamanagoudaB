@@ -1,0 +1,20 @@
+<h1>{{name}}</h1>
+<h1>{{10+1}}</h1>
+<p [style.background]='flag ? "green" :"red"'
+[style.color]='flag?"red" :"green"'
+[style.fontSize]='flag?"20px":"40px"'>
+    style binding
+</p>
+<!-- 
+<p [class.h1]="flag"
+
+[class.text-uppercase]="!flag">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut porro aliquid cum recusandae et alias repellat iusto quas magni?</p> -->
+<!-- <input type="text" name="myInput" #myInput> -->
+
+<input type="text" name="twoWayData" [(ngModel)]='twoWayData'>
+<!-- 
+when u r using two way data always decalre it in typescript -->
+<!-- {{twoWayData}} -->
+<!-- <button (click)='clickMe(myInput)'class="btn btn-outline-primary">CLick me</button> -->
+
+<button (click)='printData()'class="btn btn-outline-primary">click me</button>

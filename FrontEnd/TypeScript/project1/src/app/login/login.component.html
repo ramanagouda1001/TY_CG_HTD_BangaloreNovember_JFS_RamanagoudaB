@@ -1,0 +1,49 @@
+<div class="col-md-3 offset-md-4">
+    <form #loginFrom='ngForm' (ngSubmit)='sumbitFrom(loginFrom)'>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="" minlength="8" required #email="ngModel" ngModel class="form-control"
+                email>
+            <div *ngIf='email.touched && email.invalid'>
+                <div class="alert alert-danger" *ngIf='email.errors.required'>
+                    This field required
+                </div>
+                <div class="alert alert-danger" *ngIf='email.errors.minlength'>
+                    Minimun 8 characted required
+                </div>
+                <div class="alert alert-danger" *ngIf='email.errors.email'>
+                    in should inclide @
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password" #password="ngModel" ngModel class="form-control" 
+            required pattern="(?=^.{4,6}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+            <div *ngIf='password.invalid && password.touched'>
+                <div class="alert alert-danger" *ngIf='password.errors.required'>
+                    This field required
+                </div>
+                <div class="alert alert-danger" *ngIf='password.errors.pattern'>
+                    4 to 8 character and one uppercase and lowercase and special charatcter
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Number</label>
+            <input type="text" name="phone" id="phone" required pattern="[0-9]{10}"
+            #phone='ngModel' ngModel class="form-control">
+            <div *ngIf='phone.invalid && phone.touched'>
+                <div class="alert alert-danger" *ngIf='phone.errors.required'>
+                    This field required
+                </div>
+                <div class="alert alert-danger" *ngIf='phone.errors.pattern'>
+                    This take only 10 digit
+                </div>
+            </div>
+        </div>
+        <button type="submit"  class="btn btn-primary float-right"
+            [disabled]='loginFrom.invalid'>LOGIN</button>
+    </form>
+</div>

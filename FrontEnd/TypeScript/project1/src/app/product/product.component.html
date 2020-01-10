@@ -1,0 +1,28 @@
+<div appColor>
+
+</div>
+<div class="container mt-3">
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th appColor>Index</th>
+            <th>NAme</th>
+            <th>Image</th>
+            <th>price</th>
+            <th>DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let product of data.products;index as i' [ngStyle]='{
+         "background-color":product.price> 10000 ? "#ee7e34":"#1ea075"}'>
+            <td>{{i+1}}</td> 
+            <td>{{product.name}}</td>
+            <td>{{product.image}}</td>
+            <td>{{product.price}}</td>
+            <td><button class="btn btn-outline-primary float-right"
+                (click)='deleteLateComer(product)'
+                >Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+</div>

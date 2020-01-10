@@ -1,0 +1,52 @@
+<div class="col-md-3 offset-4">
+    <form [formGroup]='registerForm' (ngSubmit)='sumbitForm()'>
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" formControlName='name' class="form-control">
+
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input type="email" name="email" id="email" formControlName='email' class="form-control">
+            <div *ngIf='email.touched && email.invalid'>
+                <div class="text-danger" *ngIf='email.errors.required'>
+                   *This field required
+                   <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                </div>
+                <div class="alert alert-danger" *ngIf='email.errors.minlength'>
+                    Minimun 8 characted required
+                </div>
+                <div class="alert alert-danger" *ngIf='email.errors.email'>
+                    in should inclide @
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">password</label>
+            <input type="password" name="password" id="passsword" formControlName='password' class="form-control">        </div>
+
+        <div formArrayName='skills'>
+                <div class="div">
+                    <span class="h4">Skills</span><br>
+                    <i class="fa fa-plus-circle float-right" aria-hidden="true" (click)='addskill()'></i>
+                </div>
+                <div *ngFor='let control of skills.controls; index as i'>
+                    <div class="form-group">
+                        <label for="skill{{i+1}}">skill{{i+1}}</label>
+                        <input type="text" name="skill{{i+1}}"
+                        class="form-control col-md-10" [formControlName]='i'>
+                        <i class="fa fa-minus-circle float-right col-md-2" aria-hidden="true" (click)='deleteskill(i)'></i>
+                    </div>
+                    <div *ngIf='skills.controls[i].invalid && skills.controls[i].touched'>
+                        <div class="text-danger" *ngIf='skills.controls[i].errors.required'>
+                            *this required
+                        </div>
+                        <div class="text-danger" *ngIf='skills.controls[i].errors.required'>
+                            *minumn 3
+                        </div>
+                    </div>
+                </div>            
+        </div>
+        <button class="btn btn-primary float-right">Register</button>
+    </form>
+</div>

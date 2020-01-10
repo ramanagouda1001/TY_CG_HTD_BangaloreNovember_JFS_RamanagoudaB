@@ -1,0 +1,32 @@
+<div class="container">
+    <ul class="list-group">
+        <li *ngFor='let latecomer of lateComers' class="list-group-item" [ngClass]='{
+            "list-group-item-danger":latecomer.charAt(0)==="a",
+            "list-group-item-success":latecomer.charAt(0)!=="a"
+        }'
+        [ngStyle]='{"font-size":latecomer.length <=2 ? "50px":"30px"}'>
+
+            {{latecomer}}
+            <button class="btn btn-outline-primary float-right" (click)='deleteLateComer(latecomer)'>Delete</button>
+        </li>
+    </ul>
+
+</div>
+<div *ngIf='10 < 6;then trueBlock else falseBlock'>
+
+</div>
+<ng-template #trueBlock>
+    <h1 class="bg-success text-center">nemo doloribus debitis incidunt ut. Quae.</h1>
+</ng-template>
+<ng-template #falseBlock>
+    <h1 class="bg-danger text-center">false...</h1>
+</ng-template>
+<div [ngSwitch]='person'>
+    <div *ngSwitchCase='"pawan"'>pawan is selected</div>
+    <div *ngSwitchCase='"powe"'>ppwer is selected</div>
+
+    <div *ngSwitchCase='"Akshay"'>
+        <h1 class="bg-success text-center">AKSHAY </h1>
+    </div>
+    <div *ngSwitchDefault>noting</div>
+</div>
