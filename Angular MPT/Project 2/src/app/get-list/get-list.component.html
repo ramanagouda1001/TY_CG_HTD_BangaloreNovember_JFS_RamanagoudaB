@@ -1,0 +1,25 @@
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>userId</th>
+                <th>id</th>
+                <th>title</th>
+                <th>body</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let items of lists'>
+                <th>{{items.userId}}</th>
+                <td>{{items.id}}</td>
+                <td>{{items.title}}</td>
+                <td>{{items.body}}</td>
+                <td><button class="btn btn-danger" (click)='delete(items)'>Delete</button></td>
+                <td><button class="btn btn-primary" (click)='update(items)'>Update</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,24 @@
+<div class="container col-md-5">
+    <div class="card">
+        <h5 class="card-title">ADD LIST</h5>
+        <div class="card-body">
+            <form #addListForm='ngForm' (ngSubmit)='addListForm(addListForm)'>
+                <div class="form-group">
+                    <label for="userId">userId</label>
+                    <input type="number" class="form-control" id="userId" #userId='ngModel' [(ngModel)]='this.updateList.userId' placeholder="userId">
+                </div>
+                <div class="form-group">
+                    <label for="id">id</label>
+                    <input type="number" class="form-control" id="id" placeholder="id" #id='ngModel' [(ngModel)]='this.updateList.id'>
+                </div>
+                <div class="form-group">
+                    <label for="title">title</label>
+                    <input type="text" class="form-control" id="title" placeholder="title" #title='ngModel' [(ngModel)]='this.updateList.title'>
+                </div>
+                <textarea rows="4" cols="50" name="comment" form="body" for="story" #body='ngModel' [(ngModel)]='this.updateList.body'></textarea>
+                <br><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
