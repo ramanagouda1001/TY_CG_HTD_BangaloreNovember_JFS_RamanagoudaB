@@ -1,0 +1,24 @@
+package com.cagemini.forestmanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class LandDAOImplTest {
+
+	@Test
+	void testAddLand() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteLand() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDisplayLand() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,14 @@
+package com.capgemini.forestmanagement;
+
+import com.cagemini.forestmanagement.bean.Account;
+import com.cagemini.forestmanagement.dao.AdminDAOImpl;
+
+public class AdminTest {
+	
+	Account account=null;
+	AdminDAOImpl obj=null;
+	@BeforeEach{
+		
+	}
+
+}

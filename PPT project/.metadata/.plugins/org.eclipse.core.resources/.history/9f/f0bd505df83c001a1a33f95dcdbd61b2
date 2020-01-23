@@ -1,0 +1,23 @@
+package com.capgemini.forestmanagement.factory;
+
+import com.capgemini.forestmanagement.service.ClientServices;
+import com.capgemini.forestmanagement.service.ClientServicesImpl;
+import com.capgemini.forestrymanagementcollection.dao.ClientDAO;
+import com.capgemini.forestrymanagementcollection.dao.ClientDAOImpl;
+
+public class ClientFactory {
+	private ClientFactory()
+	{
+		
+	}
+	public static ClientDAO instanceOfClientDAOImpl()
+	{
+		ClientDAO dao=new ClientDAOImpl();
+		return dao;
+	}
+	public static ClientServices  instanceOfClientServicesImpl()
+	{
+		ClientServices service=new ClientServicesImpl();
+		return service;
+	}
+}

@@ -1,0 +1,51 @@
+package com.capgemini.forestrymanagementcollection.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestrymanagementcollection.bean.Contract;
+
+class ContractDAOImplTest {
+
+	private ContractDAOImpl contractDAOImpl=new ContractDAOImpl();
+	private Contract contract=new Contract();
+	@BeforeEach
+	void addContract() {
+		contract.setContractNo(1111);
+		contract.setProductId("ww22");
+		contract.setDeliveryDate("22/02/2020");
+		contract.setDeliveryDay("monday");
+		contract.setQuality(12);
+	}
+	@Test
+	void testAddContract() {
+		boolean flag=contractDAOImpl.addContract(contract);
+		assertEquals(flag, true);
+	}
+
+	@Test
+	void testDeleteContact() {
+		contractDAOImpl.addContract(contract);
+		boolean flag=contractDAOImpl.deleteContact(1111);
+		assertEquals(flag, true);
+	}
+
+	@Test
+	void testContractDetail() {
+		List<Contract> list=contractDAOImpl.contractDetail();
+		boolean flag=list!=null;
+		assertEquals(flag, true);
+	}
+
+	@Test
+	void testSearch() {
+		contractDAOImpl.addContract(contract);
+		Contract object=contractDAOImpl.search(1111);
+		assertEquals(contract, object);
+	}
+
+}

@@ -1,0 +1,24 @@
+package com.capgemini.forestmanagement.bean;
+
+import java.io.Serializable;
+import lombok.Data;
+
+@Data
+public class Contract implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int contract_No;
+	private String product_Id;
+	private String delivery_Date;
+	private String delivery_Day;
+	private int quality;
+	
+	public String toString()
+	{
+		System.out.println("\n\n-----Product Details-------");
+		return String.format("\nContract No:-"+getContract_no()+"\nProduct No:-"+getProduct_id()+"\nDelivery Date"+getDelivery_date()+
+				"\nDelivery Day"+getDelivery_day()+"\nQuality"+getQuality());
+	}
+}

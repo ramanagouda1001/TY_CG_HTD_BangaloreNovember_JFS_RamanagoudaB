@@ -1,0 +1,44 @@
+package com.cagemini.forestmanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ProductDAOImplTest {
+
+	@Test
+	void testGetAuth() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearchProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testModifyProductName() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testModifyProductDate() {
+		fail("Not yet implemented");
+	}
+
+}

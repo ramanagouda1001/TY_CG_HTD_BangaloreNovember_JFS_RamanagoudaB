@@ -1,0 +1,88 @@
+package com.capgemini.forestmanagementspring.service;
+
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.forestmanagementspring.bean.Account;
+import com.capgemini.forestmanagementspring.dao.AdminDAO;
+import com.capgemini.forestmanagementspring.exception.ForestManagementSystem;
+import com.capgemini.forestmanagementspring.validation.Validation;
+
+@Service
+public class AdminServicesImpl implements AdminServices {
+
+	@Autowired
+	private AdminDAO dao;
+
+	@Override
+	public Account getAdmin(Account admin) {
+		// TODO Auto-generated method stub
+		if (Validation.isValidEmail(admin.getEmail())) {
+			if (Validation.validPassword(admin.getPassword())) {
+				return dao.getAdmin(admin);
+			} else {
+				throw new ForestManagementSystem("invalid password format");
+			}
+		} else {
+			throw new ForestManagementSystem("Invalid mail format valid format is (abc@gmail.com)");
+		}
+	}
+
+	@Override
+	public boolean addAccount(Account admin) {
+		if (Validation.isValidEmail(admin.getEmail())) {
+			if (Validation.validPassword(admin.getPassword())) {
+				if (admin.getRole().equalsIgnoreCase("admin") || (admin.getRole().equalsIgnoreCase("client"))
+						|| (admin.getRole().equalsIgnoreCase("product"))|| (admin.getRole().equalsIgnoreCase("schedular"))) {
+					return dao.addAccount(admin);
+				} else {
+					throw new ForestManagementSystem("Only Admin,Client,product,schedular allowed");
+				}
+			} else {
+				throw new ForestManagementSystem("invalid password format");
+			}
+		} else {
+			throw new ForestManagementSystem("Invalid mail format valid format is (abc@gmail.com)");
+		}	
+	}
+	@Override
+	public boolean deleteAccount(Account bean) {
+		if(Validation.isValidEmail(bean.getEmail())) {
+			if(Validation.validPassword(bean.getPassword())) {
+				return dao.deleteAccount(bean);
+			} else {
+				throw new ForestManagementSystem("Invalid Password Format");
+			}
+		} else {
+			throw new ForestManagementSystem("Invalid mail format valid format is (abc@gmail.com)");
+		}
+	}
+
+	@Override
+	public List<Account> listAccount() {
+		// TODO Auto-generated method stub
+		return dao.listAccount();
+	}
+
+	@Override
+	public boolean updateAccount(Account admin) {
+		if (Validation.isValidEmail(admin.getEmail())) {
+			if (Validation.validPassword(admin.getPassword())) {
+				if (admin.getRole().equalsIgnoreCase("admin") || (admin.getRole().equalsIgnoreCase("client"))
+						|| (admin.getRole().equalsIgnoreCase("product"))|| (admin.getRole().equalsIgnoreCase("schedular"))) {
+					return dao.updateAccount(admin);
+				} else {
+					throw new ForestManagementSystem("Only Admin,Client,product,schedular allowed");
+				}
+			} else {
+				throw new ForestManagementSystem("invalid password format");
+			}
+		} else {
+			throw new ForestManagementSystem("Invalid mail format valid format is (abc@gmail.com)");
+		}
+		
+	}
+}

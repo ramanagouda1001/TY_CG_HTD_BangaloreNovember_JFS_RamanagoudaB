@@ -1,0 +1,83 @@
+package com.capgemini.forestmanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.FileReader;
+import java.util.Properties;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestmanagement.bean.Product;
+import com.capgemini.forestmanagement.exception.ForestManagementException;
+
+class ProductDAOImplTest {
+
+	ProductDAOImpl obj=null;
+	Product product=null;
+	
+	@BeforeEach
+	void testProductDAOImpl() {
+		FileReader reader;
+		Properties prop;
+		try {
+			reader = new FileReader("db.properties");
+			prop = new Properties();
+			prop.load(reader);
+			Class.forName(prop.getProperty("driver"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("hi");
+		}
+		obj=new ProductDAOImpl();
+
+	}
+
+	@Test
+	void testAddProduct() {
+		product=new Product();
+		product.setProductDate("01/11/2020");
+		product.setProductId("rr22");
+		product.setProductName("rohan");
+		try {
+			boolean flag=obj.addProduct(product);
+			assertEquals(flag,true);
+		}
+		catch(Exception e) {
+			assertThrows(ForestManagementException.class, () -> {
+				obj.addProduct(product);
+			});
+		}
+	}
+
+	@Test
+	void testDeleteProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearchProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testModifyProductName() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testModifyProductDate() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAuth() {
+		fail("Not yet implemented");
+	}
+
+}

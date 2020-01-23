@@ -1,0 +1,57 @@
+package com.capgemini.forestmanagement;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.cagemini.forestmanagement.bean.Account;
+import com.cagemini.forestmanagement.dao.AdminDAOImpl;
+import com.cagemini.forestmanagement.exception.ForestManagementSystem;
+
+public class AdminTest {
+	
+	Account account=null;
+	AdminDAOImpl obj=null;
+	
+	@BeforeEach
+	void loadDriver() {
+		obj=new AdminDAOImpl();
+		
+	}
+	
+	@Test
+	void getAdminTest() { //passed
+		account=new Account();
+		account.setUsername("Rohan@gmail.com");
+		account.setPassword("Ramubb143@");
+		try {
+			boolean flag=obj.getAdmin(account);
+			assertEquals(flag, true);
+		}
+		catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				obj.addAccount(account);
+		});
+		}
+	}
+	
+	@Test
+	void getAdminTestSecond() { //passed
+		account=new Account();
+		account.setUsername("Akki123@gmail.com");
+		account.setPassword("Akki123@");
+		try {
+			boolean flag=obj.getAdmin(account);
+			assertEquals(flag, false);
+		}
+		catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				obj.addAccount(account);
+		});
+		}
+
+	}
+
+} 

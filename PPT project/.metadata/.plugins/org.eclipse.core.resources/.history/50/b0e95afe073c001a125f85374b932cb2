@@ -1,0 +1,20 @@
+package com.capgemini.forestmanagement;
+
+import org.junit.jupiter.api.BeforeEach;
+
+import com.cagemini.forestmanagement.bean.Account;
+import com.cagemini.forestmanagement.dao.AdminDAOImpl;
+
+public class AdminTest {
+	
+	Account account=null;
+	AdminDAOImpl obj=null;
+	
+	@BeforeEach
+	void loadDriver() {
+		obj=new AdminDAOImpl();
+		
+	}
+	
+	
+} 

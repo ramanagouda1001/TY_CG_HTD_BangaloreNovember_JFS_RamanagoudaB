@@ -1,0 +1,52 @@
+package com.cagemini.forestmanagement.service;
+
+import java.util.List;
+
+import com.cagemini.forestmanagement.bean.Contract;
+import com.cagemini.forestmanagement.dao.ContractDAO;
+import com.cagemini.forestmanagement.dao.ProductDAO;
+import com.cagemini.forestmanagement.exception.ForestManagementSystem;
+import com.cagemini.forestmanagement.factory.ContractFactory;
+import com.cagemini.forestmanagement.factory.ProductFactory;
+
+public class ContractServicesImpl implements ContractServices{
+
+	ContractDAO dao=ContractFactory.instanceOfContaractDAOImpl();
+	
+	ProductDAO productDAO=ProductFactory.instanceOfProductDAOImpl();
+	@Override
+	public boolean addContract(Contract bean) {
+		if(productDAO.searchProduct(bean.getProduct_id())!=null) {
+			return dao.addContract(bean);
+		}
+		else {
+			throw new ForestManagementSystem("Not Exist");
+		}
+		
+	}
+
+	@Override
+	public boolean deleteContact(int contract_no) {
+		// TODO Auto-generated method stub
+		return dao.deleteContact(contract_no);
+	}
+
+	@Override
+	public List<Contract> contractDetail() {
+		// TODO Auto-generated method stub
+		return dao.contractDetail();
+	}
+
+	@Override
+	public Contract search(int contract_no) {
+		// TODO Auto-generated method stub
+		return dao.search(contract_no);
+	}
+
+	@Override
+	public List<Contract> serachProduct(String Product_id) {
+		// TODO Auto-generated method stub
+		return dao.serachProduct(Product_id);
+	}
+
+}
