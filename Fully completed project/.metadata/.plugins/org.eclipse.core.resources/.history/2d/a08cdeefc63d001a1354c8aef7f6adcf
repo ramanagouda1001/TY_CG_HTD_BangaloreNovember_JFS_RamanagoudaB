@@ -1,0 +1,56 @@
+package com.capgemini.forestmanagementspring.dao;
+
+import static org.hamcrest.CoreMatchers.both;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.capgemini.forestmanagementrest.exception.ForestManagementSystem;
+import com.capgemini.forestmanagementspring.bean.Account;
+
+@SpringBootTest
+class AdminDAOImplTest {
+
+	@Autowired
+	private AdminDAO adminDAO;
+	
+	@Test
+	void testAddAccount() {
+		Account account=new Account();
+		account.setEmail("Shreehari@gmail.com");
+		account.setPassword("Shreehari123@");
+		account.setRole("admin");
+		try {
+			boolean flag=adminDAO.addAccount(account);
+			assertEquals(flag, true);
+			}
+			catch (Exception e) {
+				assertThrows(com.capgemini.forestmanagementspring.exception.ForestManagementSystem.class, () -> {
+					adminDAO.addAccount(account);
+			});
+		}
+	}
+
+//	@Test
+//	void testDeleteAccount() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testListAccount() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testGetAdmin() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testUpdateAccount() {
+//		fail("Not yet implemented");
+//	}
+
+}

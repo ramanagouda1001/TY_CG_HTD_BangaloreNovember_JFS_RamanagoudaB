@@ -1,0 +1,117 @@
+package com.capgemini.forestmanagementrest.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.forestmanagementrest.bean.Contract;
+import com.capgemini.forestmanagementrest.exception.ForestManagementSystem;
+
+@Repository
+public class ContractDAOImpl implements ContractDAO{
+
+	@PersistenceUnit
+	private EntityManagerFactory entityManagerFactory;
+
+	@Override
+	public boolean addContract(Contract bean) {
+		EntityManager entiryManager = entityManagerFactory.createEntityManager();
+		EntityTransaction transaction = entiryManager.getTransaction();
+		try {
+			boolean status=false;
+			transaction.begin();
+			entiryManager.persist(bean);
+			status=true;
+			transaction.commit();
+			return status;
+		} catch (Exception e) {
+			throw new ForestManagementSystem("ELEMENT IS ALREADY PRESENT");
+		}	
+	}
+
+	@Override
+	public boolean deleteContact(int contract_no) {
+		EntityManager entiryManager = entityManagerFactory.createEntityManager();
+		EntityTransaction transaction = entiryManager.getTransaction();
+		try {
+			boolean status=false;
+			transaction.begin();
+			Contract contract=entiryManager.find(Contract.class, contract_no);
+			entiryManager.remove(contract);
+			status=true;
+			transaction.commit();
+			return status;
+		} catch (Exception e) {
+			throw new ForestManagementSystem("ELEMENT IS ALREADY DELETED");
+		}
+
+	}
+
+	@Override
+	public List<Contract> contractDetail() {
+		EntityManager entiryManager=entityManagerFactory.createEntityManager();
+		EntityTransaction transaction=entiryManager.getTransaction();
+		try {
+			transaction.begin();
+			String jpql="from Contract";
+			Query query=entiryManager.createQuery(jpql);
+			List<Contract> list=query.getResultList();
+			transaction.commit();
+			return list;
+		} catch (Exception e) {
+			throw new ForestManagementSystem("EMPTY..................");
+		}
+	}
+
+	@Override
+	public boolean updateContract(Contract bean) {
+		EntityManager entityManager=entityManagerFactory.createEntityManager();
+		EntityTransaction transaction=entityManager.getTransaction();
+		try {
+			transaction.begin();
+			Contract obj=entityManager.find(Contract.class,bean.getContract_no());
+			if(bean.getCustomer_id()!=0) {
+				obj.setCustomer_id(bean.getCustomer_id());
+			} else {
+				obj.setCustomer_id(obj.getCustomer_id());
+			}
+			if(bean.getTransport_id()!=0) {
+				obj.setTransport_id(bean.getTransport_id());
+			} else {
+				obj.setTransport_id(obj.getTransport_id());
+			}
+			if(bean.getQuality()!=0) {
+				obj.setQuality(bean.getQuality());
+			}
+			else {
+				obj.setQuality(obj.getQuality());
+			}
+			obj.setDelivery_date(bean.getDelivery_date());
+			obj.setProduct_id(bean.getProduct_id());
+			transaction.commit();
+			return true;
+		} catch(Exception e) {
+			throw new ForestManagementSystem("Not Contract is present to updated");
+		}		
+	}
+
+	@Override
+	public Contract searchContract(int contract_no) {
+		EntityManager entityManager=entityManagerFactory.createEntityManager();
+		EntityTransaction transaction=entityManager.getTransaction();
+		try {
+			transaction.begin();
+			Contract object=entityManager.find(Contract.class, contract_no);
+			transaction.commit();
+			return object;
+		}catch (Exception e) {
+			throw new ForestManagementSystem("Contract is Not Present");
+		}
+	}
+}

@@ -1,0 +1,84 @@
+package com.capgemini.forestmanagementrest.service;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import com.capgemini.forestmanagementrest.bean.Account;
+import com.capgemini.forestmanagementrest.config.ORMConfig;
+import com.capgemini.forestmanagementrest.config.TestBeans;
+import com.capgemini.forestmanagementrest.exception.ForestManagementSystem;
+
+@SpringJUnitConfig(classes = {TestBeans.class,ORMConfig.class})
+
+class AdminServicesImplTest {
+
+	@Autowired
+	private AdminServices adminDAO;
+	
+	@Test
+	void testAddAccount() {
+		Account account=new Account();
+		account.setEmail("Shreehari@gmail.com");
+		account.setPassword("Shreehari123@");
+		account.setRole("admin");
+		try {
+			boolean flag=adminDAO.addAccount(account);
+			assertEquals(flag, true);
+			}
+			catch (Exception e) {
+				assertThrows(ForestManagementSystem.class, () -> {
+					adminDAO.addAccount(account);
+			});
+		}
+	}
+
+	@Test
+	void testDeleteAccount() {
+		Account account=new Account();
+		account.setEmail("Shreehari@gmail.com");
+		account.setPassword("Shreehari123@");
+		account.setRole("admin");
+		try {
+			boolean flag=adminDAO.deleteAccount(account);
+			assertEquals(flag, true);
+			}
+			catch (Exception e) {
+				assertThrows(ForestManagementSystem.class, () -> {
+					adminDAO.addAccount(account);
+			});
+		}	
+	}
+
+	@Test
+	void testListAccount() {
+		List<Account> list=adminDAO.listAccount();
+		assertNotNull(list);
+	}
+
+	@Test
+	void testGetAdmin() {
+		Account account=new Account();
+		account.setEmail("Rohan@gmail.com");
+		account.setPassword("Ramubb143@");
+		account.setRole("admin");
+		try {
+			Account object=adminDAO.getAdmin(account);
+			assertEquals(object, account);
+			}
+			catch (Exception e) {
+				assertThrows(ForestManagementSystem.class, () -> {
+					adminDAO.addAccount(account);
+			});
+		}
+
+	}
+
+
+}

@@ -1,0 +1,45 @@
+package com.cagemini.forestmanagement.dao;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+
+import com.cagemini.forestmanagement.bean.Account;
+
+public class ContractDAOImplTest {
+
+	Account account=null;
+	ContractDAOImpl obj=null;
+	
+	@BeforeEach
+	void loadDriver() {
+		obj=new ContractDAOImpl();
+		
+	}
+	@Test
+	public void testAddContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteContact() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testContractDetail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSearch() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSerachProduct() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,67 @@
+package com.cagemini.forestmanagement.dao;
+
+import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+
+import com.cagemini.forestmanagement.bean.Contract;
+import com.cagemini.forestmanagement.exception.ForestManagementSystem;
+
+public class ContractDAOImplTest {
+
+	Contract contract=null;
+	ContractDAOImpl obj=null;
+	
+	@BeforeEach
+	void loadDriver() {
+		obj=new ContractDAOImpl();
+		
+	}
+	
+	
+	@Test
+	public void testAddContract() {
+		contract=new Contract();
+		contract.setContractNo(1111);
+		contract.setCustomerId(1212);
+		contract.setProductId("ee22");
+		contract.setTransportId(2222);
+		contract.setDeliveryDate("28/12/2019");
+		contract.setDeliveryDay("Tuesday");
+		contract.setQuality(12);
+		try {
+			boolean flag=obj.addContract(contract);
+			assertEquals(flag, true);
+		}
+		catch(Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				obj.addContract(contract);
+		});
+
+		}
+	}
+
+	@Test
+	public void testDeleteContact() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testContractDetail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSearch() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSerachProduct() {
+		fail("Not yet implemented");
+	}
+
+}

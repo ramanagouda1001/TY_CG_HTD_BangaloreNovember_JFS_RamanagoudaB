@@ -1,0 +1,49 @@
+package com.capgemini.forestmanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class AdminDAOImplTest {
+
+	@Test
+	void testAdminDAOImpl() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAdmin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddAccount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAccount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteAccount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testListAccount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateAccount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetSchedular() {
+		fail("Not yet implemented");
+	}
+
+}

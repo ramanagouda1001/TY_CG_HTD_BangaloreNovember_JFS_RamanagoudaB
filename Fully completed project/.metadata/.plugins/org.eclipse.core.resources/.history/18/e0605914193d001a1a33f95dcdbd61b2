@@ -1,0 +1,77 @@
+package com.capgemini.forestmanagements;
+
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.FileReader;
+import java.util.Properties;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestmanagement.bean.Contract;
+import com.capgemini.forestmanagement.dao.ContractDAOImpl;
+import com.capgemini.forestmanagement.exception.ForestManagementException;
+
+public class ContractTest {
+
+	ContractDAOImpl obj=null;
+	Contract contract=null;
+	
+	@BeforeEach
+	void loadDriver()
+	{
+		FileReader reader;
+		Properties prop;
+		try {
+			reader = new FileReader("db.properties");
+			prop = new Properties();
+			prop.load(reader);
+			Class.forName(prop.getProperty("driver"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("hi");
+		}
+		obj=new ContractDAOImpl();
+	}
+	@Test
+	void addContractTest()//passed
+	{
+		contract=new Contract();
+		contract.setContractNo(1111);
+		contract.setCustomerId(1212);
+		contract.setProductId("ee22");
+		contract.setTransportId(2222);
+		contract.setDeliveryDate("28/12/2019");
+		contract.setDeliveryDay("Tuesday");
+		contract.setQuality(12);
+		try {
+			boolean flag=obj.addContract(contract);
+			assertEquals(flag, true);
+		}
+		catch(Exception e) {
+			assertThrows(ForestManagementException.class, () -> {
+				obj.addContract(contract);
+		});
+	}
+}
+	
+
+	@Test
+	void serachContractTest()
+	{
+		contract=new Contract();
+		contract.setContractNo(1234);
+		contract.setCustomerId(1213);
+		contract.setProductId("ww22");
+		contract.setTransportId(1234);
+		contract.setDeliveryDate("22/12/2019");
+		contract.setDeliveryDay("monday");
+		contract.setQuality(12);
+		Contract bean=obj.search(1234);
+		if(bean!=null)
+			assertEquals(bean, contract);
+		else
+			assertEquals(bean,null );
+	}
+}

@@ -1,0 +1,5 @@
+package com.capgemini.forestmanagementrest.dao;
+
+public class TestBeans {
+
+}

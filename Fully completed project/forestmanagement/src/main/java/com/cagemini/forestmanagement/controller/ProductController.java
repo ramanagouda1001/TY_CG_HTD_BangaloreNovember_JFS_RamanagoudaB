@@ -1,0 +1,316 @@
+package com.cagemini.forestmanagement.controller;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.cagemini.forestmanagement.bean.Account;
+import com.cagemini.forestmanagement.bean.Product;
+import com.cagemini.forestmanagement.exception.ForestManagementSystem;
+import com.cagemini.forestmanagement.factory.ProductFactory;
+import com.cagemini.forestmanagement.service.ProductServices;
+import com.cagemini.forestmanagement.validation.Validation;
+
+public class ProductController {
+	public static void main(String args[]){
+		ProductServices services = ProductFactory.instanceOfProductServicesImpl();
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		boolean status = true;
+		boolean flag=true;
+		Account account;
+		while (flag == true) {
+			System.out.println("------------Welcome Product --------");
+			System.out.println("------------Login First-------------");
+			account = new Account();
+			String username=null;
+			String password=null;
+			while (status == true) {
+				System.out.println("Enter the Email");
+				username = input.next();
+				if (Validation.isValidEmail(username)) {
+					account.setUsername(username);
+					status = false;
+				} else {
+					System.err.println("Invalid format");
+				}
+			}
+			status = true;
+			while (status == true) {
+				System.out.println("Enter the password");
+				password = input.next();
+				if (Validation.validPassword(password)) {
+					account.setPassword(password);
+					status = false;
+				} else {
+					System.err.println("Invalid format");
+				}
+			}
+			status=true;
+			if(services.getAuth(username, password))
+			{
+				flag =false;
+				System.out.println("sucessfully logined");
+			}
+			else
+			{
+				System.err.println("Account not present");
+				System.err.println("Please Account Admin");
+			}
+		}
+		while (true) {
+			String choice;
+			System.out.println("---------Welcome product-------------");
+			System.out.println("Press 1 to Add Product Details");
+			System.out.println("Press 2 to Delete Product Details");
+			System.out.println("Press 3 to Display Product Details");
+			System.out.println("Press 4 to Access the Product Details");
+			System.out.println("Press 5 to Modify the Product Details");
+			System.out.println("Press 6 to Return");
+			System.out.println("enter the choice");
+			choice = input.next();
+			switch (Validation.isNumber2(choice)) {
+			case 1:
+				flag=true;
+				Product proobj = new Product();
+				while (flag == true) {
+					System.out.println("Enter the  product ID(Only 2 Alphabets followed By 2 Digits)");
+					String proString = input.next();
+					if (Validation.validateAlpaLength(proString)) {
+						proobj.setProductId(proString);
+						flag = false;
+					} else {
+						System.err.println("Invalid format(XX00,.. allowed)");
+					}
+				}
+				flag = true;
+				while (flag == true) {
+					System.out.println("Enter the product name");
+					String product_name = input.next();
+					if (product_name.length() >= 3 && product_name.length() <= 13) {
+						if (Validation.isString(product_name)) {
+							proobj.setProductName(product_name);
+							flag= false;
+						} else {
+							System.err.println("invalid format");
+							flag = true;
+						}
+					} else {
+						System.err.println("Minimum Character length is 3 and Maximam is 13");
+					}
+				}
+				flag = true;
+				while (flag == true) {
+					System.out.println("enter the date dd/mm/yyyy");
+					String date = input.next();
+					String regex = "^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$";
+					Pattern pattern = Pattern.compile(regex);
+					Matcher matcher = pattern.matcher(date);
+					if (matcher.matches()) {
+						if (Validation.validateMonth(date)) {
+							SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+							Date todayDate = new Date();
+							Date inputDate = null;
+							try {
+								inputDate = formatter.parse(date);
+							} catch (ParseException e) {
+								e.printStackTrace();
+							}
+							if (inputDate.after(todayDate)) {
+								proobj.setProductDate(Validation.validateWeeks(date));
+								flag = false;
+							} else if (inputDate.before(todayDate)) {
+								System.out.println();
+								System.err.print("plz enter date greater than todays ");
+								System.out.println("Todays date is=" + todayDate);
+							} else if (inputDate.equals(todayDate)) {
+								proobj.setProductDate(Validation.validateWeeks(date));
+								flag = false;
+							}
+						} else {
+							System.err.println("The day Does not Exist in this month");
+						}
+					} else {
+						System.out.println();
+						System.err.println("Invliad format enter as dd/mm/yyyy");
+					}
+				}
+				flag = true;
+				while (flag == true) {
+					System.out.println("Enter the Quantity");
+					String qualityString = input.next();
+					if (Validation.isNumber(qualityString)) {
+						int qualityNumber = Integer.parseInt(qualityString);
+						proobj.setProductQuality(qualityNumber);
+						flag = false;
+					} else {
+						System.err.println("Plz enter the quantity");
+					}
+				}
+				try {
+					if (services.addProduct(proobj)) {
+						System.out.println("------Successfully Added Product-----");
+					} else {
+						System.err.println("Already exist");
+					}
+				} catch (ForestManagementSystem e) {
+					System.err.println(e.getMessage());
+				}
+				break;
+			case 2:
+				Product proobj1 = new Product();
+				flag = true;
+				while (flag == true) {
+					System.out.println("Enter the  product ID(Only 2 Alphabets followed By 2 Digits)");
+					String proString = input.next();
+					if (Validation.validateAlpaLength(proString)) {
+						proobj1.setProductId(proString);
+						try {
+							if (services.deleteProduct(proobj1.getProductId())) {
+								System.out.println("--------Sucessfully Deleted----------");
+							} else {
+								System.err.println("Does not exist");
+							}
+						} catch (ForestManagementSystem e) {
+							System.err.println(e.getMessage());
+						}
+						flag = false;
+					} else {
+						System.err.println("Invalid format(XX00,.. allowed)");
+					}
+				}
+				flag = true;
+				break;
+			case 3:
+				if (services.getAllProduct() == null) {
+					System.out.println("empty");
+				} else {
+					System.out.println(services.getAllProduct());
+				}
+				break;
+			case 4:
+				Product proobj2 = new Product();
+				flag = true;
+				while (flag == true) {
+					System.out.println("Enter the  product ID(Only 2 Alphabets followed By 2 Digits)");
+					String proString = input.next();
+					if (Validation.validateAlpaLength(proString)) {
+						proobj2.setProductId(proString);
+						flag = false;
+						try {
+							System.out.println(services.searchProduct(proobj2.getProductId()));
+						} catch (ForestManagementSystem e) {
+							System.out.println(e.getMessage());
+						}
+					} else {
+						System.err.println("Invalid format(XX00,.. allowed)");
+					}
+				}
+				flag = true;
+				break;
+			case 5:
+				String proString = null;
+				while (flag == true) {
+					System.out.println("Enter the  product ID to Modify(Only 2 Alphabets followed By 2 Digits)");
+					proString = input.next();
+					if (Validation.validateAlpaLength(proString)) {
+						flag = false;
+					} else {
+						System.err.println("Invalid format(XX00,.. allowed)");
+					}
+				}
+				flag = true;
+				System.out.println("what You want to modify");
+				System.out.println("Press 1 to modify the Product Name");
+				System.out.println("Press 2 to Modify the Product Date");
+				String check = input.next();
+				switch (Validation.isNumber2(check)) {
+				case 1:
+					flag = true;
+					while (flag == true) {
+						System.out.println("Enter the product name");
+						String product_name = input.next();
+						if (product_name.length() >= 3 && product_name.length() <= 13) {
+							if (Validation.isString(product_name)) {
+								try {
+									if (services.modifyProductName(proString, product_name)) {
+										System.out.println("--------Upadted successfully-------");
+									} else {
+										System.err.println("error");
+									}
+								} catch (ForestManagementSystem e) {
+									System.err.println(e.getMessage());
+								}
+								flag = false;
+							} else {
+								System.err.println("invalid format");
+								flag = true;
+							}
+						} else {
+							System.err.println("Minimum Character length is 3 and Maximam is 13");
+						}
+					}
+					flag = true;
+					break;
+				case 2:
+					flag= true;
+					while (flag == true) {
+						System.out.println("Enter the date  in dd/mm/yyyy Format");
+						String product_date = input.next();
+						String regex = "^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$";
+						Pattern pattern = Pattern.compile(regex);
+						Matcher matcher = pattern.matcher(product_date);
+						if (matcher.matches()) {
+							SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+							Date todayDate = new Date();
+							Date inputDate = null;
+							try {
+								inputDate = formatter.parse(product_date);
+							} catch (ParseException e) {
+								e.printStackTrace();
+							}
+							if (inputDate.after(todayDate)) {
+								try {
+									if (services.modifyProductDate(proString, product_date))
+										System.out.println("updtaed");
+									else
+										System.out.println("error");
+								} catch (ForestManagementSystem e) {
+									System.err.println(e.getMessage());
+								}
+								flag = false;
+							} else if (inputDate.before(todayDate)) {
+								System.out.println();
+								System.err.print("plz enter date greater than todays  ");
+								System.out.println("Todays date is=" + todayDate);
+							} else if (inputDate.equals(todayDate)) {
+								try {
+									if (services.modifyProductDate(proString, product_date))
+										System.out.println("updtaed");
+									else
+										System.out.println("error");
+								} catch (ForestManagementSystem e) {
+									System.err.println(e.getMessage());
+								}
+								flag = false;
+							}
+						} else {
+							System.out.println();
+							System.err.println("Invliad format enter as dd/mm/yyyy");
+						}
+					}
+					break;
+				default:
+					System.out.println("Please select the Above option");
+				}
+			break;
+			case 6:
+			return;
+			default:System.out.println("Please select the Above Choice");
+			}
+		} 
+	}
+}

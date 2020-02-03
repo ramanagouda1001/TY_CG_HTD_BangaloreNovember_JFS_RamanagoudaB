@@ -1,0 +1,34 @@
+package com.capgemini.forestmanagementrest.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ProductServicesImplTest {
+
+	@Test
+	void testAddProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearchProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateProduct() {
+		fail("Not yet implemented");
+	}
+
+}

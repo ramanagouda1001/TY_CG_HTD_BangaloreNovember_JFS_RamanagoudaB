@@ -1,0 +1,27 @@
+package com.cagemini.forestmanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import com.cagemini.forestmanagement.bean.Product;
+import com.cagemini.forestmanagement.exception.ForestManagementSystem;
+
+class ProductDAOImplTest {
+
+	ProductDAO obj;
+	Product product=null;
+
+	@Test
+	void testAddProduct() {
+		product=new Product();
+		product.setProductDate("01/11/2020");
+		product.setProductId("rr22");
+		product.setProductName("rohan");
+		product.setProductQuality(22);
+			boolean flag=obj.addProduct(product);
+			assertEquals(flag,true);
+	}
+}

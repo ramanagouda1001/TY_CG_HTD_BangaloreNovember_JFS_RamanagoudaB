@@ -1,0 +1,40 @@
+package com.capgemini.forestmanagementrest.service;
+
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import com.capgemini.forestmanagementrest.config.ORMConfig;
+import com.capgemini.forestmanagementrest.config.TestBeans;
+
+@SpringJUnitConfig(classes = {TestBeans.class,ORMConfig.class})
+class ContractServicesImplTest {
+
+	@Test
+	void testAddContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteContact() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testContractDetail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearchContract() {
+		fail("Not yet implemented");
+	}
+
+}

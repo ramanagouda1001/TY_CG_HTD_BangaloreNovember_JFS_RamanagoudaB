@@ -1,0 +1,35 @@
+package com.cagemini.forestmanagement.bean;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="product")
+public class Product{
+	
+	@Id
+	@Column
+	private String productId;
+	
+	@Column
+	private String productName;
+	
+	@Column
+	private String productDate;
+	
+	@Column
+	private int product_quality;
+	
+	public String toString()
+	{
+		return "\n\n-------Product Details--------------\nProduct Id:-"+product_id+"\nProduct Name:-"+product_name+"\nProduct Date:-"+product_date+
+				"\nProduct Quality:-"+product_quality+"\n\n";
+	}
+
+}

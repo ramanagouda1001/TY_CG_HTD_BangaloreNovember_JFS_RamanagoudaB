@@ -1,0 +1,14 @@
+package com.cagemini.forestmanagement.dao;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class AdminDAOImplTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

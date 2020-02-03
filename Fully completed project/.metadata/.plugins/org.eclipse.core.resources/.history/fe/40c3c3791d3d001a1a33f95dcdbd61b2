@@ -1,0 +1,29 @@
+package com.capgemini.forestmanagement.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ContractServicesImplTest {
+
+	@Test
+	void testAddContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteContact() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testContractDetail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearch() {
+		fail("Not yet implemented");
+	}
+
+}

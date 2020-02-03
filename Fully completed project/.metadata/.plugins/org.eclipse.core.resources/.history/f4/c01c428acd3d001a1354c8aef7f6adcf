@@ -1,0 +1,56 @@
+package com.capgemini.forestmanagementspring.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.capgemini.forestmanagementspring.bean.Product;
+import com.capgemini.forestmanagementspring.exception.ForestManagementSystem;
+
+@SpringBootTest
+class ProductDAOImplTest {
+
+	@Autowired
+	ProductDAO productDAO;
+	
+	@Test
+	void testAddProduct() {
+		Product product=new Product();
+		product.setProduct_id("tt55");
+		product.setProduct_name("Rubber");
+		product.setProduct_date("2020-02-02");
+		product.setProduct_quality(55);
+		try {
+			boolean flag=productDAO.addProduct(product);
+			assertEquals(flag, true);
+		}
+		catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				productDAO.addProduct(product);
+			});
+		}
+	}
+
+	@Test
+	void testDeleteProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearchProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateProduct() {
+		fail("Not yet implemented");
+	}
+
+}

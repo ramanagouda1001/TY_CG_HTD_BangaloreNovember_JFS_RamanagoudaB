@@ -1,0 +1,45 @@
+package com.capgemini.forestmanagementrest.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import com.capgemini.forestmanagementrest.bean.Account;
+import com.capgemini.forestmanagementrest.config.ORMConfig;
+import com.capgemini.forestmanagementrest.config.TestBeans;
+
+@SpringJUnitConfig(classes = {TestBeans.class,ORMConfig.class})
+class AdminDAOImplTest {
+
+	@Autowired
+	AdminDAO adminDAO;
+	
+	@Test
+	void testAddAccount() {
+		Account account=new Account();
+		account.setUsername("Ras@gmail.com");
+		account.setPassword("Ras123@");
+		account.setRole("Admin");
+		boolean flag=adminDAO.addAccount(account);
+		assertTrue(flag);
+	}
+
+	
+//	@Test
+//	void testGetAdmin() {
+//		fail("Not yet implemented");
+//	}
+
+//	@Test
+//	void testDeleteAccount() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testListAccount() {
+//		fail("Not yet implemented");
+//	}
+
+}

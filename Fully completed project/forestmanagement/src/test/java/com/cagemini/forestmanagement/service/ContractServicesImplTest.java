@@ -1,0 +1,85 @@
+package com.cagemini.forestmanagement.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.cagemini.forestmanagement.bean.Contract;
+import com.cagemini.forestmanagement.exception.ForestManagementSystem;
+
+class ContractServicesImplTest {
+
+	ContractServices obj=null;
+	Contract contract=null;
+	
+	@BeforeEach
+	void load() {
+		obj=new ContractServicesImpl();
+	}
+	@Test
+	void testAddContract() {
+		contract=new Contract();
+		contract.setContractNo(1111);
+		contract.setCustomerId(1212);
+		contract.setProductId("ee22");
+		contract.setTransportId(2222);
+		contract.setDeliveryDate("28/12/2019");
+		contract.setDeliveryDay("Tuesday");
+		contract.setQuality(12);
+		try {
+			boolean flag=obj.addContract(contract);
+			assertEquals(flag, true);
+		}
+		catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				obj.addContract(contract);
+		});
+		}
+	}
+
+	@Test
+	void testDeleteContact() {
+		int contractNo=1111;
+		try {
+			boolean flag=obj.deleteContact(contractNo);
+			assertEquals(flag, true);
+		}
+		catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				obj.deleteContact(contractNo);
+		});
+		}
+	}
+
+	@Test
+	void testSearch() {
+		int ContractNo=2222;
+		try {
+			Contract contract=obj.search(ContractNo);
+			assertEquals(contract!=null, true);
+		}
+		catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				obj.search(ContractNo);
+		});
+		}
+	}
+
+	@Test
+	void testSerachProduct() {
+		String productId="ww22";
+		try {
+			List<Contract> list=obj.serachProduct(productId);
+			assertEquals(list!=null, true);
+		}
+		catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				obj.serachProduct(productId);
+		});
+		}
+	}
+
+}

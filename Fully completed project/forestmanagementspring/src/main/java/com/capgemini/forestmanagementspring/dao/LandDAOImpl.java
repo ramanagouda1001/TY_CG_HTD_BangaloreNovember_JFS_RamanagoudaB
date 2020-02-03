@@ -1,0 +1,120 @@
+package com.capgemini.forestmanagementspring.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.forestmanagementspring.bean.Land;
+import com.capgemini.forestmanagementspring.exception.ForestManagementSystem;
+
+@Repository
+public class LandDAOImpl implements LandDAO {
+
+	@PersistenceUnit
+	private EntityManagerFactory entityManagerFactory;
+	
+	
+	@Override
+	public boolean addLand(Land land) {
+		EntityManager entiryManager=entityManagerFactory.createEntityManager();
+		EntityTransaction transaction=entiryManager.getTransaction();
+		try {
+			boolean status=false;
+			transaction.begin();
+			entiryManager.persist(land);
+			status=true;
+			transaction.commit();
+			return status;
+		} catch (Exception e) {
+			throw new ForestManagementSystem("LAND DETAILS ARE ALREADY PRESENT");
+		}
+
+	}
+
+	@Override
+	public boolean deleteLand(int landNumber) {
+		EntityManager entiryManager=entityManagerFactory.createEntityManager();
+		EntityTransaction transaction=entiryManager.getTransaction();
+		try {
+			boolean status=false;
+			transaction.begin();
+			Land land=entiryManager.find(Land.class, landNumber);
+			entiryManager.remove(land);
+			status=true;
+			transaction.commit();
+			return status;
+		} catch (Exception e) {
+			throw new ForestManagementSystem("LAND DETAILS ARE ALREADY DELETED OR NOT PRESENT");
+		}
+
+	}
+
+	@Override
+	public List<Land> displayLand() {
+		EntityManager entiryManager=entityManagerFactory.createEntityManager();
+		EntityTransaction transaction=entiryManager.getTransaction();
+		try {
+			transaction.begin();
+			String jpql="from Land";
+			Query query=entiryManager.createQuery(jpql);
+			List<Land> list=query.getResultList();
+			transaction.commit();
+			if(list.isEmpty())
+				return null;
+			else
+				return list;
+		} catch (Exception e) {
+			throw new ForestManagementSystem("EMPTY........");
+		}
+
+	}
+
+	@Override
+	public boolean updateLand(Land land) {
+		EntityManager entityManager=entityManagerFactory.createEntityManager();
+		EntityTransaction transaction=entityManager.getTransaction();
+		try {
+			transaction.begin();
+			Land obj=entityManager.find(Land.class, land.getNumber());
+			if(land.getName()!=null)
+			{
+				obj.setName(land.getName());
+			}
+			else {
+				obj.setName(obj.getName());
+			}
+			if(land.getArea()!=0)
+			{
+				obj.setArea(land.getArea());
+			}
+			else {
+				obj.setArea(obj.getArea());
+			}
+			
+			if(land.getRegion()!=null)
+			{
+				obj.setRegion(land.getRegion());
+			}
+			else {
+				obj.setRegion(obj.getRegion());
+			}
+			if(land.getForest_type()!=null)
+			{
+				obj.setForest_type(land.getForest_type());
+			}
+			else {
+				obj.setForest_type(obj.getForest_type());
+			}
+			transaction.commit();
+			return true;
+		}catch (Exception e) {
+			throw new ForestManagementSystem("Cannot Implemeneted");
+		}
+	}
+}

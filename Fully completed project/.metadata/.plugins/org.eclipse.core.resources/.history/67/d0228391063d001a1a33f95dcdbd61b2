@@ -1,0 +1,34 @@
+package com.capgemini.forestmanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ContractDAOImplTest {
+
+	@Test
+	void testContractDAOImpl() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddContract() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteContact() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testContractDetail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearch() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,96 @@
+package com.capgemini.forestmanagementspring.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.capgemini.forestmanagementspring.bean.Contract;
+import com.capgemini.forestmanagementspring.dao.contractServices;
+import com.capgemini.forestmanagementspring.exception.ForestManagementSystem;
+
+@SpringBootTest
+class ContractServicesImplTest {
+
+	@Autowired
+	ContractServices contractServices;
+
+	@Test
+	void testAddContract() {
+		Contract contract = new Contract();
+		contract.setContract_no(1111);
+		contract.setCustomer_id(2585);
+		contract.setDelivery_date("2020-01-24");
+		contract.setProduct_id("uu66");
+		contract.setQuality(23);
+		contract.setTransport_id(2528);
+		try {
+			boolean flag = contractServices.addContract(contract);
+			assertEquals(flag, true);
+		} catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				contractServices.addContract(contract);
+			});
+		}
+	}
+
+	@Test
+	void testDeleteContact() {
+		try {
+			boolean flag = contractServices.deleteContact(6565);
+			assertEquals(flag, true);
+		} catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				contractServices.deleteContact(6565);
+			});
+		}
+	}
+
+	@Test
+	void testContractDetail() {
+		List<Contract> list = contractServices.contractDetail();
+		assertNotNull(list);
+	}
+
+	@Test
+	void testUpdateContract() {
+		Contract contract = new Contract();
+		contract.setContract_no(1111);
+		contract.setCustomer_id(2585);
+		contract.setDelivery_date("2020-01-24");
+		contract.setProduct_id("uu66");
+		contract.setQuality(29);
+		contract.setTransport_id(2828);
+		try {
+			boolean flag = contractServices.updateContract(contract);
+			assertEquals(flag, true);
+		} catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				contractServices.updateContract(contract);
+			});
+		}
+	}
+
+	@Test
+	void testSearchContract() {
+		Contract contract = new Contract();
+		contract.setContract_no(1111);
+		contract.setCustomer_id(2585);
+		contract.setDelivery_date("2020-01-24");
+		contract.setProduct_id("uu66");
+		contract.setQuality(29);
+		contract.setTransport_id(2828);
+		try {
+			Contract object = contractServices.searchContract(1111);
+			assertEquals(object, contract);
+		} catch (Exception e) {
+			assertThrows(ForestManagementSystem.class, () -> {
+				contractServices.updateContract(contract);
+			});
+		}
+	}
+
+}

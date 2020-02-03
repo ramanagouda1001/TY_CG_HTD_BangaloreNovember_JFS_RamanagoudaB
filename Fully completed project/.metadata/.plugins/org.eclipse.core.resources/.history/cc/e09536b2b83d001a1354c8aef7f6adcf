@@ -1,0 +1,55 @@
+package com.capgemini.forestmanagementrest.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import com.capgemini.forestmanagementrest.bean.Contract;
+import com.capgemini.forestmanagementrest.config.ORMConfig;
+import com.capgemini.forestmanagementrest.config.TestBeans;
+import com.capgemini.forestmanagementrest.exception.ForestManagementSystem;
+
+@SpringJUnitConfig(classes = {TestBeans.class,ORMConfig.class})
+class ContractDAOImplTest {
+
+	@Autowired
+	ContractDAO contractDAO;
+	@Test
+	void testAddContract() {
+		Contract contract=new Contract();
+		contract.setContract_no(2322);
+		contract.setCustomer_id(1111);
+		contract.setProduct_id("ee22");
+		contract.setTransport_id(2222);
+		contract.setDelivery_date("2020-02-02");
+		contract.setDelivery_day("monday");
+		contract.setQuality(22);
+		try {
+			boolean flag=contractDAO.addContract(contract);
+			assertEquals(flag,true);
+		}
+		catch (Exception e) {
+				assertThrows(ForestManagementSystem.class, () -> {
+					contractDAO.addContract(contract);
+			});
+			}
+	}
+
+	@Test
+	void testDeleteContact() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testContractDetail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateContract() {
+		fail("Not yet implemented");
+	}
+
+}

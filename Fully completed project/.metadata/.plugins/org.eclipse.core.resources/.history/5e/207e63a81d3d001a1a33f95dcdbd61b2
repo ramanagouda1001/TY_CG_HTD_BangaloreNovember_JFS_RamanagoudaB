@@ -1,0 +1,68 @@
+package com.capgemini.forestmanagement.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.FileReader;
+import java.util.Properties;
+
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestmanagement.bean.Land;
+import com.capgemini.forestmanagement.dao.LandDAO;
+import com.capgemini.forestmanagement.dao.LandDAOImpl;
+import com.capgemini.forestmanagement.exception.ForestManagementException;
+
+class LandServicesImplTest {
+
+	Land land = null;
+	LandServices obj = null;
+
+	@Test
+	void testLandDAOImpl() {
+		FileReader reader;
+		Properties prop;
+		try {
+			reader = new FileReader("db.properties");
+			prop = new Properties();
+			prop.load(reader);
+			Class.forName(prop.getProperty("driver"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("hi");
+		}
+		obj = new LandServicesImpl();
+	}
+
+	@Test
+	void testAddLand() {
+		land = new Land();
+		land.setNumber(1111);
+		land.setArea(2222);
+		land.setName(("Bangalore"));
+		land.setRegion("North");
+		land.setForestType("conforous");
+		try {
+			boolean flag = obj.addLand(land);
+			assertEquals(flag, true);
+		} catch (Exception e) {
+			assertThrows(ForestManagementException.class, () -> {
+				obj.addLand(land);
+			});
+		}
+	}
+
+	@Test
+	void testDeleteLand() {
+		int landNumber = 1111;
+		try {
+			boolean flag = obj.deleteLand(landNumber);
+			assertEquals(flag, true);
+		} catch (Exception e) {
+			assertThrows(ForestManagementException.class, () -> {
+				obj.deleteLand(landNumber);
+			});
+		}
+	}
+
+
+}

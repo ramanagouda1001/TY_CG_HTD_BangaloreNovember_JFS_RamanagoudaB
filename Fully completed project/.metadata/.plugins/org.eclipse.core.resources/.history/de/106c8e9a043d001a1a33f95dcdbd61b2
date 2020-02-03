@@ -1,0 +1,34 @@
+package com.capgemini.forestrymanagementcollection.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ClientServicesImplTest {
+
+	@Test
+	void testAdd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSpecificClient() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetClient() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDelete() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testModify() {
+		fail("Not yet implemented");
+	}
+
+}

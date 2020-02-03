@@ -1,0 +1,71 @@
+package com.capgemini.forestmanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.FileReader;
+import java.util.Properties;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestmanagement.bean.Contract;
+import com.capgemini.forestmanagement.exception.ForestManagementException;
+
+class ContractDAOImplTest {
+
+	ContractDAOImpl obj=null;
+	Contract contract=null;
+	
+	@BeforeEach
+	void testContractDAOImpl() {
+		FileReader reader;
+		Properties prop;
+		try {
+			reader = new FileReader("db.properties");
+			prop = new Properties();
+			prop.load(reader);
+			Class.forName(prop.getProperty("driver"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("hi");
+		}
+		obj=new ContractDAOImpl();
+	}
+
+	@Test
+	void testAddContract() {
+		contract=new Contract();
+		contract.setContractNo(1111);
+		contract.setCustomerId(1212);
+		contract.setProductId("ee22");
+		contract.setTransportId(2222);
+		contract.setDeliveryDate("28/12/2019");
+		contract.setDeliveryDay("Tuesday");
+		contract.setQuality(12);
+		try {
+			boolean flag=obj.addContract(contract);
+			assertEquals(flag, true);
+		}
+		catch(Exception e) {
+			assertThrows(ForestManagementException.class, () -> {
+				obj.addContract(contract);
+		});
+	}
+}
+
+	@Test
+	void testDeleteContact() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testContractDetail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearch() {
+		fail("Not yet implemented");
+	}
+
+}

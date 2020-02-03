@@ -1,0 +1,43 @@
+package com.cagemini.forestmanagement.bean;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="contract")
+public class Contract{
+	@Id
+	@Column
+	private int contractNo;
+	
+	@Column
+	private int customerId;
+	
+	@Column
+	private String productId;
+	
+	@Column
+	private int transportId;
+	
+	@Column
+	private String deliveryDate;
+	
+	@Column
+	private String deliveryDay;
+	
+	@Column
+	private int quality;
+
+	public String toString()
+	{
+		return "\n\n\n----------Contract Details--------\nContract No:-"+contract_no+"\nCustomer Id:-"+customer_id+"\nProduct Id:-"
+				+product_id+"\nTransport Id:-"+transport_id+"\nDelivery Date:-"+delivery_date+"\nDelivery Day:-"+delivery_day+"\nQuality:-"
+				+quality+"\n\n";
+	}
+}

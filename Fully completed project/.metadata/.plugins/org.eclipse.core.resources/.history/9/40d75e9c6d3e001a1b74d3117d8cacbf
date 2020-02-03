@@ -1,0 +1,14 @@
+package com.capgemini.forestmanagementrest.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class AdminServicesImplTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

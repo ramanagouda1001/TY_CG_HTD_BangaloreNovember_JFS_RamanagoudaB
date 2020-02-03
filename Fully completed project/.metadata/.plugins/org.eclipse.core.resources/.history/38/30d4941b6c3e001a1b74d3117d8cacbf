@@ -1,0 +1,23 @@
+package com.capgemini.forestmanagementrest.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.capgemini.forestmanagementrest.dao.AdminDAO;
+import com.capgemini.forestmanagementrest.dao.AdminDAOImpl;
+import com.capgemini.forestmanagementrest.dao.ContractDAO;
+import com.capgemini.forestmanagementrest.dao.ContractDAOImpl;
+
+@Configuration
+public class TestBeans {
+
+	@Bean
+	public AdminDAO adminDAO() {
+		return new AdminDAOImpl();
+	}
+	
+	@Bean 
+	public ContractDAO contractDAO() {
+		return new ContractDAOImpl();
+	}
+}
