@@ -1,0 +1,32 @@
+<div class="bg">
+    <div class="cards">
+        <h2>Register</h2>
+        <form #updatedetails='ngForm' (ngSubmit)='updateAccountDetails(updatedetails)'>
+            <div class="form-group">
+                <input type="hidden" name="email" id="email" #email='ngModel' [(ngModel)]='email1' class="form-control" required pattern="[A-Za-z0-9._%+-]+@[a-z.-]+\.[a-z]{3,}$" placeholder="Enter the Email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password <i class="fa fa-unlock" aria-hidden="true"></i></label>
+                <input type="password" name="password" id="password" placeholder="Enter Password" #password='ngModel' [(ngModel)]='password1' class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$">
+                <div *ngIf='password.invalid && password.touched'>
+                    <div class="alert alert-danger" *ngIf='password.errors.required'>
+                        This field is mandatory
+                    </div>
+                    <div class="alert alert-danger" *ngIf='password.errors.pattern'>
+                        Password should include atleast 5 characters, one uppercase, one lowercase,one special character and one number.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Role<i class="fa fa-user" aria-hidden="true" required></i></label>
+                <select name="role" id="role" #role='ngModel' [(ngModel)]='role1' required class="form-control" required>
+                    <option value="product">Product</option>
+                    <option value="client">Client</option>
+                    <option value="Schedular">Schedular</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-lg" [disabled]='updatedetails.invalid'>Sumbit</button>
+            <div class="Message" *ngIf='message'>{{message}}</div>
+        </form>
+    </div>
+</div>

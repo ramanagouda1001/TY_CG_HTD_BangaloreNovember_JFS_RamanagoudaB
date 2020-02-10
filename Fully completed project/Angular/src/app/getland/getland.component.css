@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+td {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: 'Courgette', cursive;
+    border: 10px solid transparent;
+}
+
+table {
+    border: 10px solid transparent;
+}
+
+.bg {
+    background: url("../../assets/images/nature-sky-sunset-the-mountains-66997.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 752px;
+    margin-top: -61px;
+}
+
+.container {
+    padding-top: 80px;
+}
+
+.update:hover {
+    color: white;
+    background-color: green;
+    border: green;
+}
+
+.delete:hover {
+    color: white;
+    background-color: red;
+    border: red;
+}

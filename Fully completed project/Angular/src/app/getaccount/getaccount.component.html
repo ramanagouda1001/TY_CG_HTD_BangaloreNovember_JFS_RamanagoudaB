@@ -1,0 +1,25 @@
+<div class="bg">
+    <div class="container">
+        <table class="table table-bordered">
+            <thead class="thead-dark text-center">
+                <tr>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let account of accounts'>
+                    <td>{{account.email}}</td>
+                    <td>{{account.password}}</td>
+                    <td>{{account.role}}</td>
+                    <td><button class="btn btn-light delete" (click)='deleteAccount(account)'>Delete</button></td>
+                    <td><button class="btn btn-light update" (click)='updateAccount(account)'>Update</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

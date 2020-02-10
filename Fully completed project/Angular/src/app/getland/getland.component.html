@@ -1,0 +1,28 @@
+<div class="bg">
+    <div class="container ">
+        <table class="table table-bordered">
+            <thead class="thead-dark text-center">
+                <tr>
+                    <th>Land Number</th>
+                    <th>Land Name</th>
+                    <th>Land Area(Sq.cm)</th>
+                    <th>Land Region</th>
+                    <th>Land Type</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let land of lands'>
+                    <td>{{land.number}}</td>
+                    <td>{{land.name}}</td>
+                    <td>{{land.area}}</td>
+                    <td>{{land.region}}</td>
+                    <td>{{land.forest_type}}</td>
+                    <td><button class="btn btn-light delete" (click)='deleteLand(land)'>Delete</button></td>
+                    <td><button class="btn btn-light update" (click)='updateLand(land)'>Update</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

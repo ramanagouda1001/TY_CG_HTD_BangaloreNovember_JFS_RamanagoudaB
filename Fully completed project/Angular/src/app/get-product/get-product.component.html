@@ -1,0 +1,29 @@
+<div class="bg">
+    <div class="container">
+        <table class="table table-bordered">
+            <thead class="thead-dark text-center">
+                <tr>
+                    <th>product_id</th>
+                    <th>product_name</th>
+                    <th>product_date</th>
+                    <th>product_quality</th>
+                    <th *ngIf='!isProduct()'>Order</th>
+                    <th *ngIf='isProduct()'>Delete</th>
+                    <th *ngIf='isProduct()'>Update</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let product of products'>
+                    <td>{{product.product_id}}</td>
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.product_date}}</td>
+                    <td>{{product.product_quality}}</td>
+                    <td *ngIf='!isProduct()'><button class="btn btn-light" (click)='addcontract(product)'>Order</button></td>
+                    <td><button class="btn btn-light delete" (click)='deleteProduct(product)' *ngIf='isProduct()'>Delete</button></td>
+                    <td><button class="btn btn-light update" (click)='updateProduct(product)' *ngIf='isProduct()'>Update</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

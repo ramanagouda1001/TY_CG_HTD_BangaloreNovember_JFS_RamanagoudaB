@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+.bg-light {
+    background-color: transparent !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    font-size: 20px;
+    font-weight: 800px;
+    font-family: 'Courgette', cursive;
+    margin-left: 20px;
+}
+
+.navbar-light .navbar-brand {
+    color: white;
+    font-family: 'Courgette', cursive;
+}
+
+i {
+    cursor: pointer;
+}
+
+i span {
+    font-family: 'Courgette', cursive;
+}

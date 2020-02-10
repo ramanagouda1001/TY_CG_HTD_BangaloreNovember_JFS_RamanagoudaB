@@ -1,0 +1,41 @@
+<div class="bg">
+    <div class="cards">
+        <h2>Land Deatils</h2>
+        <form #updateProductForm='ngForm' (ngSubmit)='updateProductDeatils(updateProductForm)'>
+            <div class="form-group">
+
+                <input type="hidden" name="product_id" id="product_id" #product_id='ngModel' [(ngModel)]='product_id1' class="form-control" required pattern="[a-zA-Z]{2}[0-9]{2}">
+            </div>
+            <div class="form-group">
+                <label for="product_name">Product_Name</label>
+                <input type="text" name="product_name" id="product_name" #product_name='ngModel' required [(ngModel)]='product_name1' class="form-control" pattern="^[a-zA-Z]*$">
+                <div *ngIf='product_name.invalid && product_name.touched'>
+                    <div class="alert alert-danger" *ngIf='product_name.invalid && product_name.errors.pattern'>
+                        Only alphabets is allowed
+                    </div>
+                    <div class="alert alert-danger" *ngIf='product_name.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Product_date">Product_Date</label>
+                <input type="date" name="product_date" id="product_date" max={{date}} #product_date='ngModel' required [(ngModel)]='product_date1' class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="product_quality">product_Quality</label>
+                <input type="number" name="product_quality" id="product_quality" #product_quality='ngModel' [(ngModel)]='product_quality1' class="form-control" required pattern='^[0-9]{2}$'>
+                <div *ngIf='product_quality.invalid && product_quality.touched'>
+                    <div class="alert alert-danger" *ngIf='product_quality.invalid && product_quality.errors.pattern'>
+                        Only Number is Allowed
+                    </div>
+                    <div class="alert alert-danger" *ngIf='product_quality.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-light" [disabled]='updateProductForm.invalid'>Sumbit</button>
+            <div class="Message" *ngIf='message'>{{message}}</div>
+        </form>
+    </div>
+</div>

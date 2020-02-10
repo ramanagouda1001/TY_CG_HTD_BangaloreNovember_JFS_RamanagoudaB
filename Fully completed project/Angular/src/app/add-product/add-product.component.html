@@ -1,0 +1,49 @@
+<div class="bg">
+    <div class="cards">
+        <h2>Land Deatils</h2>
+        <form #addProductForm='ngForm' (ngSubmit)='addProductDetails(addProductForm)'>
+            <div class="form-group">
+                <label for="product_id">Product_id</label>
+                <input type="text" name="product_id" id="product_id" #product_id='ngModel' ngModel class="form-control" required pattern="[a-zA-Z]{2}[0-9]{2}">
+                <div *ngIf='product_id.invalid && product_id.touched'>
+                    <div class="alert alert-danger" *ngIf='product_id.invalid && product_id.errors.pattern'>
+                        Only Two Alphabet followed by Two Number
+                    </div>
+                    <div class="alert alert-danger" *ngIf='product_id.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="product_name">Product_Name</label>
+                <input type="text" name="product_name" id="product_name" #product_name='ngModel' required ngModel class="form-control" pattern="^[a-zA-Z]*$">
+                <div *ngIf='product_name.invalid && product_name.touched'>
+                    <div class="alert alert-danger" *ngIf='product_name.invalid && product_name.errors.pattern'>
+                        Only alphabets is allowed
+                    </div>
+                    <div class="alert alert-danger" *ngIf='product_name.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Product_date">Product_Date</label>
+                <input type="date" name="product_date" id="product_date" max={{date}} #product_date='ngModel' required ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="product_quality">product_Quality</label>
+                <input type="number" name="product_quality" id="product_quality" #product_quality='ngModel' ngModel class="form-control" required pattern='^[0-9]$'>
+                <div *ngIf='product_quality.invalid && product_quality.touched'>
+                    <div class="alert alert-danger" *ngIf='product_quality.invalid && product_quality.errors.pattern'>
+                        Only Number is Allowed
+                    </div>
+                    <div class="alert alert-danger" *ngIf='product_quality.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-light" [disabled]='addProductForm.invalid'>Sumbit</button>
+            <div class="Message" *ngIf='message'>{{message}}</div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="bg">
+    <div class="cards">
+        <h2>Contract Deatils</h2>
+        <form #updateContractForm='ngForm' (ngSubmit)='updateContractDetails(updateContractForm)'>
+            <div class="form-group">
+                <input type="hidden" name="contract_no" id="contract_no" #contract_no='ngModel' [(ngModel)]='contractNo' class="form-control" required pattern='^[0-9]{4}$'>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="customer_id" id="customer_id" #customer_id='ngModel' required [(ngModel)]='customerId1' del class="form-control" pattern='^[0-9]{4}$'>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="product_id" id="product_id" #product_id='ngModel' [(ngModel)]='productId1' class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="transport_id">Transport ID</label>
+                <input type="number" name="transport_id" id="transport_id" #transport_id='ngModel' required [(ngModel)]='transportId1' class="form-control" pattern='^[0-9]{4}$'>
+                <div *ngIf='transport_id.invalid && transport_id.touched'>
+                    <div class="alert alert-danger" *ngIf='transport_id.invalid && transport_id.errors.pattern'>
+                        Only four Digit number is allowed
+                    </div>
+                    <div class="alert alert-danger" *ngIf='transport_id.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="delivery_date">delivery_date</label>
+                <input type="date" name="delivery_date" id="delivery_date" min={{date}} required #delivery_date='ngModel' [(ngModel)]='deliveryDate1' class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="quality">Quality</label>
+                <input type="text" name="quality" id="quality" #quality='ngModel' [(ngModel)]='quality1' required class="form-control" pattern="^[0-9]*$">
+                <div *ngIf='quality.invalid && quality.touched'>
+                    <div class="alert alert-danger" *ngIf='quality.invalid && quality.errors.pattern'>
+                        Only four Digit number is allowed
+                    </div>
+                    <div class="alert alert-danger" *ngIf='quality.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <button type="submit" [disabled]='updateContractForm.invalid' class="btn btn-light">update</button>
+            <div class="Message" *ngIf='message'>{{message}}</div>
+        </form>
+    </div>
+</div>

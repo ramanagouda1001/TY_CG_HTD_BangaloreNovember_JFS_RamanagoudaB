@@ -1,0 +1,62 @@
+<div class="bg">
+    <div class="cards">
+        <h2>Land Deatils</h2>
+        <form #updateLandForm='ngForm' (ngSubmit)='updateLandDetails(updateLandForm)'>
+            <div class="form-group">
+
+                <input type="hidden" name="number" id="number" #number='ngModel' [(ngModel)]='number1' required class="form-control" pattern='^[0-9]{4}$' placeholder="Land Number">
+                <div *ngIf='number.invalid && number.touched'>
+                    <div class="alert alert-danger" *ngIf='number.invalid && number.errors.pattern'>
+                        Only four Digit number is allowed
+                    </div>
+                    <div class="alert alert-danger" *ngIf='number.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="land_name">Land Name</label>
+                <input type="text" name="name" id="name" #name='ngModel' [(ngModel)]='name1' class="form-control" required pattern="[a-zA-Z ]*$">
+                <div *ngIf='name.invalid && name.touched'>
+                    <div class="alert alert-danger" *ngIf='name.invalid && name.errors.pattern'>
+                        Only alphabets is allowed
+                    </div>
+                    <div class="alert alert-danger" *ngIf='name.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="land_area">Land Area</label>
+                <input type="number" name="area" id="area" #area='ngModel' [(ngModel)]='area1' class="form-control" required pattern='^[0-9]{4,6}$'>
+                <div *ngIf='area.invalid && area.touched'>
+                    <div class="alert alert-danger" *ngIf='area.invalid && area.errors.pattern'>
+                        Only 4-6 Digit number is Allowed
+                    </div>
+                    <div class="alert alert-danger" *ngIf='area.errors.required'>
+                        *This field is madanatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="land_region">Land Region</label>
+                <select name="region" id="region" #region='ngModel' [(ngModel)]='region1' class="form-control" required>
+                        <option value="north">North</option>
+                        <option value="south">South</option>
+                        <option value="east">East</option>
+                        <option value="West">West</option>
+                    </select>
+            </div>
+            <div class="form-group">
+                <label for="Land_type">Land type</label>
+                <select name="forest_type" id="forest_type" #forest_type='ngModel' [(ngModel)]='forest_type1' class="form-control" required>
+                        <option value="Coniferous">Coniferous</option>
+                        <option value="Borad leaved">Borad leaved</option>
+                        <option value="Mixed">Mixed</option>
+                    </select>
+            </div>
+            <button type="submit" [disabled]='updateLandForm.invalid' class="btn btn-primary">Update</button>
+            <div class="Message" *ngIf='message'>{{message}}</div>
+        </form>
+    </div>
+</div>

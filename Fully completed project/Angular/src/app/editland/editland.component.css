@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+td {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: 'Courgette', cursive;
+    border: 10px solid transparent;
+}
+
+table {
+    border: 10px solid transparent;
+}
+
+.cards {
+    position: absolute;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    height: 600px;
+    width: 400px;
+}
+
+.bg {
+    background: url("../../assets/images/cold-dark-eerie-environment-414144.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 752px;
+    margin-top: -61px;
+}
+
+.cards h2 {
+    color: white;
+    font-family: 'Courgette', cursive;
+}
+
+label {
+    color: white;
+    font-family: 'Courgette', cursive;
+}

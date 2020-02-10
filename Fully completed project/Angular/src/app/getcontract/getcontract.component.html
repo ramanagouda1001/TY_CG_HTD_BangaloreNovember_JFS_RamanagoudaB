@@ -1,0 +1,91 @@
+<div class="bg">
+    <div class="container">
+        <div class="message" *ngIf='message'>{{message}}</div>
+        <table class="table table-bordered ">
+            <thead class="thead-dark text-center">
+                <tr>
+                    <th>Contract_no</th>
+                    <th>Customer_id</th>
+                    <th>Product_id</th>
+                    <th>transport_id</th>
+                    <th>Delivery_date</th>
+                    <th>Quality</th>
+                    <th *ngIf='isAdmin()'>Delete</th>
+                    <th *ngIf='isAdmin()'>Update</th>
+                    <th *ngIf='isSchedular()'>View</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let contract of contracts'>
+                    <td>{{contract.contract_no}}</td>
+                    <td>{{contract.customer_id}}</td>
+                    <td>{{contract.product_id}}</td>
+                    <td>{{contract.transport_id}}</td>
+                    <td>{{contract.delivery_date}}</td>
+                    <td>{{contract.quality}}</td>
+                    <td *ngIf='isAdmin()'><button class="btn btn-light delete" (click)="deleteContract(contract)">Delete</button></td>
+                    <td *ngIf='isAdmin()'><button class="btn btn-light update" (click)="updateContract(contract)">Update</button></td>
+                    <td *ngIf='isSchedular()'><button class="btn btn-light update" (click)="statusContract(contract)">View</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container mt-3">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark text-center">
+            <tr>
+                <th>Contract_no</th>
+                <th>Customer_id</th>
+                <th>Product_id</th>
+                <th>transport_id</th>
+                <th>Delivery_date</th>
+                <th>Quality</th>
+                <th *ngIf='isAdmin()'>Delete</th>
+                <th *ngIf='!isAdmin()'>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let contract of contracts'>
+                <td>{{contract.contract_no}}</td>
+                <td>{{contract.customer_id}}</td>
+                <td>{{contract.product_id}}</td>
+                <td>{{contract.transport_id}}</td>
+                <td>{{contract.delivery_date}}</td>
+                <td>{{contract.quality}}</td>
+                <td><button class="btn btn-outline-danger" *ngIf='isAdmin()' (click)="deleteContract(contract)">Delete</button></td>
+                <td><button class="btn btn-outline-success" *ngIf='!isAdmin()' (click)="updateContract(contract)">Update</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
